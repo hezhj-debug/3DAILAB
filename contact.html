@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <title>联系 | 3DAILab</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- 1. 引入 DaisyUI 和 Tailwind -->
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css" rel="stylesheet" type="text/css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- 2. 引入 FontAwesome 图标 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- 3. 配置主题色 -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#003366',    // 深蓝
+            secondary: '#3793ee',  // 亮蓝
+            accent: '#f8f9fa',     // 浅灰背景
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* 隐藏滚动条但允许滚动 */
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  </style>
+</head>
+
+<body class="font-sans min-h-screen bg-gray-50 text-slate-800 flex flex-col">
+
+  <!-- ========================
+       2. 主体内容
+       ======================== -->
+  <main class="flex-grow container mx-auto px-4 py-8 pt-28">
+    
+    <div class="max-w-5xl mx-auto space-y-12">
+      
+      <!-- 2.1 联系信息板块 -->
+      <section>
+        <div class="card glass shadow-xl border-t-4 border-primary">
+          <div class="card-body">
+            <h2 class="card-title text-3xl mb-6 border-b border-gray-400/30 pb-3 text-primary flex items-center">
+              <i class="fa-solid fa-address-card mr-3"></i> 联系我们 <span class="text-lg font-normal text-gray-500 ml-2">Contact</span>
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
+              
+              <!-- 左侧：文字信息 -->
+              <div class="space-y-8">
+                <div class="flex items-start gap-4 group">
+                  <div class="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+                    <i class="fa fa-map-marker-alt text-xl"></i>
+                  </div>
+                  <div>
+                    <h5 class="text-lg font-bold text-gray-800 mb-1">地址 Address</h5>
+                    <p class="text-gray-600 leading-relaxed">广东省珠海市唐家湾<br>中山大学珠海校区瀚林三号</p>
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-4 group">
+                  <div class="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+                    <i class="fa fa-envelope text-xl"></i>
+                  </div>
+                  <div>
+                    <h5 class="text-lg font-bold text-gray-800 mb-1">邮箱 Email</h5>
+                    <a href="mailto:chenyp79@mail.sysu.edu.cn" class="link link-hover text-secondary text-lg">chenyp79@mail.sysu.edu.cn</a>
+                    <p class="text-xs text-gray-400 mt-1">(公事请使用学校邮箱联系)</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- <!== 右侧：地图容器 ==>
+              <div class="w-full h-64 bg-gray-100 rounded-xl overflow-hidden border border-gray-200 shadow-inner flex items-center justify-center relative">
+                <!== ClustrMaps 将注入此处 ==>
+                <div id="clustrmaps" class="w-full h-full flex items-center justify-center"></div>
+                <!== 占位提示，防止地图加载慢时空白 ==>
+                <div class="absolute inset-0 flex items-center justify-center pointer-events-none -z-10">
+                  <span class="loading loading-spinner text-primary"></span>
+                </div>
+              </div> -->
+              <!-- 右侧：图片容器 -->
+              <div class="w-full h-64 bg-gray-100 rounded-xl overflow-hidden border border-gray-200 shadow-inner relative group">
+                
+                <!-- 引入图片 -->
+                <!-- w-full h-full: 撑满容器 -->
+                <!-- object-cover: 裁剪图片以适应容器比例，防止变形 -->
+                <img 
+                  src="img/sysu.jpg" 
+                  alt="中山大学珠海校区" 
+                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <!-- (可选) 添加一个悬浮提示层，增加交互感 -->
+                <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                  <span class="text-white font-bold tracking-wider border border-white px-4 py-2 rounded-lg backdrop-blur-sm">
+                    <i class="fas fa-map-marked-alt mr-2"></i> 中山大学珠海校区
+                  </span>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2.2 研究生招生板块 -->
+      <section>
+        <div class="card bg-white shadow-xl border border-gray-100">
+          <div class="card-body">
+            <h2 class="card-title text-2xl mb-4 text-primary flex items-center">
+              <i class="fa-solid fa-user-graduate mr-3"></i> 研究生招生 <span class="text-base font-normal text-gray-500 ml-2">Graduate Admission</span>
+            </h2>
+            
+            <div class="bg-blue-50/50 p-6 rounded-lg border border-blue-100 mb-6">
+              <p class="text-lg text-gray-700 mb-4 font-medium">
+                实验室长期招收 <span class="text-secondary font-bold">硕士、博士、博士后</span>，同时欢迎学有余力的本科生提前加入科研训练。
+              </p>
+              
+              <h5 class="font-bold text-slate-800 mb-3 flex items-center">
+                <i class="fas fa-check-circle text-success mr-2"></i> 希望你具备：
+              </h5>
+              <ol class="list-decimal list-inside space-y-2 text-gray-600 ml-2">
+                <li>较强的 <span class="font-bold text-gray-800">自我驱动力</span> 与自律精神；</li>
+                <li>浓厚的 <span class="font-bold text-gray-800">研究兴趣</span> 与持续学习意愿；</li>
+                <li>良好的 <span class="font-bold text-gray-800">数学与专业基础</span> (编程/英语能力佳者优先)。</li>
+              </ol>
+            </div>
+
+            <div class="card-actions justify-end">
+              <a href="mailto:chenyp79@mail.sysu.edu.cn" class="btn btn-primary btn-wide rounded-full text-white shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all">
+                <i class="fas fa-paper-plane mr-2"></i> 发送邮件申请
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ========================
+       3. 页脚 (Fixed Footer)
+       ======================== -->
+  <footer class="footer footer-center p-6 bg-[#003366] text-white mt-auto">
+    <aside>
+      <!-- 这里的 ID 是为了防止与上面的地图冲突，通常页脚放简单的版权信息即可 -->
+      <!-- 如果需要这里也显示地图，请确保 ID 不同或复用逻辑 -->
+      <div class="mb-2 opacity-80 text-sm">中山大学 · 珠海</div>
+      <p class="font-bold text-lg">中山大学遥感科学与技术学院 3DAILab</p>
+    </aside>
+  </footer>
+
+  <!-- 4. 脚本 -->
+  <script src="js/common.js"></script>
+  
+  <!-- 访客地图脚本 (专门针对本页的 ID) -->
+  <script>
+    // 定义地图参数
+    var _clustrmaps = {
+      key: 'sail-contact-demo', 
+      path: '/contact', 
+      id: 'clustrmaps' // 对应上面 HTML 中的 div id="clustrmaps"
+    };
+  </script>
+  <script src="https://cdn.clustrmaps.com/map_v2.js"></script>
+
+</body>
+</html>

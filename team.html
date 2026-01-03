@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <title>团队成员 | 3DAILab</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- 1. 引入 DaisyUI 和 Tailwind -->
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css" rel="stylesheet" type="text/css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
+  <!-- 2. 引入 FontAwesome 图标 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script src="js/common.js"></script>
+  <!-- 3. 配置主题色 -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#003366',    // 深蓝品牌色
+            secondary: '#3793ee',  // 亮蓝
+            accent: '#f8f9fa',     // 浅灰背景
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* 隐藏滚动条 */
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    
+    /* 锚点定位偏移 (点击链接时留出导航栏高度) */
+    .scroll-mt-32 { scroll-margin-top: 8rem; }
+    
+    /* === 侧边栏按钮样式 (复刻截图) === */
+    /* 激活状态：深蓝背景 + 白字 */
+    .sidebar-link.active {
+      background-color: #003366 !important; 
+      color: white !important;
+      border-color: #003366 !important;
+      font-weight: 700;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+    /* 普通状态：浅灰背景 + 深灰字 + 边框 */
+    .sidebar-link {
+      background-color: #f8f9fa;
+      color: #495057;
+      border: 1px solid #dee2e6;
+      border-radius: 0.375rem; /* 圆角 */
+      transition: all 0.3s ease;
+      text-align: center;
+      display: block;
+      padding: 0.75rem 1rem;
+      font-size: 1.1rem; /* 字体稍微加大 */
+    }
+    .sidebar-link:hover {
+      background-color: #e2e6ea;
+      transform: translateY(-1px);
+    }
+  </style>
+
+  <style>
+    /* 1. 基础容器设置 */
+    .hover-3d {
+      position: relative;
+      perspective: 1000px; /* 定义 3D 视距，数值越小透视感越强 */
+
+       /* ---在此处添加尺寸设置--- */
+      width: 200 px;  /* 设置固定宽度，例如 200像素 */
+      height: auto;  /* 高度自动 */
+      margin: 0 auto; /* 如果需要居中，加上这一行 */
+    }
+
+    /* 2. 图片容器的基础状态 */
+    .hover-3d figure {
+      transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* 平滑过渡 */
+      transform-style: preserve-3d;
+      transform-origin: center center;
+    }
+
+    /* 3. 那8个空div的布局：将它们铺满卡片，形成九宫格感应区 */
+    .hover-3d > div {
+      position: absolute;
+      width: 33.333%;
+      height: 33.333%;
+      z-index: 50; /* 保证感应区在图片之上 */
+      /* border: 1px solid red;  调试时可以取消注释查看感应区 */
+    }
+
+    /* 4. 定位这8个方块 (中间留空，展示默认状态) */
+    .hover-3d > div:nth-child(2) { top: 0; left: 0; }        /* 左上 */
+    .hover-3d > div:nth-child(3) { top: 0; left: 33.33%; }   /* 中上 */
+    .hover-3d > div:nth-child(4) { top: 0; right: 0; }       /* 右上 */
+    .hover-3d > div:nth-child(5) { top: 33.33%; left: 0; }   /* 中左 */
+    .hover-3d > div:nth-child(6) { top: 33.33%; right: 0; }  /* 中右 */
+    .hover-3d > div:nth-child(7) { bottom: 0; left: 0; }     /* 左下 */
+    .hover-3d > div:nth-child(8) { bottom: 0; left: 33.33%; }/* 中下 */
+    .hover-3d > div:nth-child(9) { bottom: 0; right: 0; }    /* 右下 */
+
+    /* 5. 核心动作：鼠标碰到不同方块时，让 figure 往不同方向倒 */
+    
+    /* 左上角 -> 向左上倾斜 */
+    .hover-3d:has(div:nth-child(2):hover) figure {
+      transform: rotateX(15deg) rotateY(-15deg);
+    }
+    /* 中上 -> 向上倾斜 */
+    .hover-3d:has(div:nth-child(3):hover) figure {
+      transform: rotateX(15deg);
+    }
+    /* 右上 -> 向右上倾斜 */
+    .hover-3d:has(div:nth-child(4):hover) figure {
+      transform: rotateX(15deg) rotateY(15deg);
+    }
+    /* 中左 -> 向左倾斜 */
+    .hover-3d:has(div:nth-child(5):hover) figure {
+      transform: rotateY(-15deg);
+    }
+    /* 中右 -> 向右倾斜 */
+    .hover-3d:has(div:nth-child(6):hover) figure {
+      transform: rotateY(15deg);
+    }
+    /* 左下 -> 向左下倾斜 */
+    .hover-3d:has(div:nth-child(7):hover) figure {
+      transform: rotateX(-15deg) rotateY(-15deg);
+    }
+    /* 中下 -> 向下倾斜 */
+    .hover-3d:has(div:nth-child(8):hover) figure {
+      transform: rotateX(-15deg);
+    }
+    /* 右下 -> 向右下倾斜 */
+    .hover-3d:has(div:nth-child(9):hover) figure {
+      transform: rotateX(-15deg) rotateY(15deg);
+    }
+
+    /* 6. 可选：增加高光效果，让3D感更强 */
+    .hover-3d figure::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 60%);
+      opacity: 0;
+      transition: opacity 0.3s;
+      pointer-events: none;
+    }
+    /* 鼠标放上去时显示一点反光 */
+    .hover-3d:hover figure::after {
+      opacity: 1;
+    }
+  </style>
+
+</head>
+
+<body class="font-sans min-h-screen bg-gray-50 text-slate-800 flex flex-col">
+
+
+  <!-- ========================
+       2. 左侧固定侧边栏 (Fixed Sidebar)
+       ======================== -->
+  <aside class="hidden lg:block fixed left-0 top-[80px] w-48 h-[calc(100vh-80px)] bg-transparent p-6 overflow-y-auto z-40">
+    <nav class="flex flex-col gap-3 font-bold text-center">
+      <a href="#faculty" class="sidebar-link active" data-target="faculty">教师</a>
+      <a href="#phd" class="sidebar-link" data-target="phd">博士生</a>
+      <a href="#master" class="sidebar-link" data-target="master">硕士生</a>
+      <a href="#bachelor" class="sidebar-link" data-target="bachelor">本科生</a>
+      <a href="#graduate" class="sidebar-link" data-target="graduate">毕业生</a>
+      <a href="#visitor" class="sidebar-link" data-target="visitor">交流访问</a>
+    </nav>
+  </aside>
+
+  <!-- ========================
+       3. 主体内容区 (Offset Content)
+       ======================== -->
+  <main class="flex-grow w-full lg:ml-48 lg:w-[calc(100%-12rem)] px-6 py-8 pt-28">
+    
+    <div class="max-w-7xl mx-auto space-y-24"> <!-- space-y-24 增加板块间距，防止高亮跳动 -->
+
+      <!-- ==================== 教师 Faculty ==================== -->
+      <!-- id="faculty" 用于锚点定位 -->
+      <section id="faculty" class="scroll-mt-32">
+        <h2 class="text-3xl font-normal text-slate-800 mb-8 border-l-4 border-primary pl-3 flex items-center">
+          教师
+        </h2>
+        
+        <!-- 教师卡片容器 -->
+        <div class="flex flex-col lg:flex-row gap-8 items-stretch">
+          
+          <!-- 左侧：个人信息卡片 -->
+          <div class="card bg-white border border-gray-200 w-full lg:w-1/4 shrink-0 shadow-sm h-fit pb-6">
+            <figure class="px-8 pt-8 mb-4">
+              <img src="img/people/YipingChen.jpg" alt="陈一平" 
+                   class="object-cover aspect-[3/4] w-full rounded-md shadow-sm border border-gray-100 max-w-[220px]" 
+                   onerror="this.src='https://via.placeholder.com/300x400?text=Yiping+Chen'"/>
+            </figure>
+            
+            <div class="card-body items-center text-center p-4 pt-0">
+              <!-- 字体加大 -->
+              <h2 class="text-3xl text-slate-800 font-bold mb-1">陈一平</h2>
+              <p class="text-lg text-gray-700 font-medium">副教授 / 博士生导师</p>
+              <p class="text-base text-gray-500 mb-4">激光雷达点云智能解译</p>
+              
+              <div class="flex flex-wrap justify-center gap-2 mt-auto">
+                <span class="bg-red-500 text-white text-xs px-2 py-1 rounded">团队负责人</span>
+                <span class="bg-gray-500 text-white text-xs px-2 py-1 rounded">中山大学逸仙学者</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 右侧：详细折叠面板 -->
+          <div class="w-full lg:w-3/4 flex flex-col">
+            <h3 class="text-2xl font-bold text-slate-800 mb-4 px-1">陈一平</h3>
+            
+            <div class="join join-vertical w-full border border-gray-200 rounded bg-white h-full shadow-sm">
+              
+              <!-- 1. 教育 -->
+              <div class="collapse collapse-arrow join-item border-b border-gray-100">
+                <input type="radio" name="faculty-accordion" checked="checked" /> 
+                <div class="collapse-title text-base font-medium hover:bg-gray-50 flex items-center gap-3 py-4">
+                  <i class="fas fa-graduation-cap text-slate-500 w-6"></i> 教育
+                </div>
+                <div class="collapse-content text-base text-gray-700 pt-2"> <!-- 字体加大到 text-base -->
+                  <ul class="space-y-3 list-none pl-2">
+                    <li><i class="fas fa-university mr-2 text-gray-400"></i>国防科技大学 工程博士 (2007.03 – 2011.12)</li>
+                    <li><i class="fas fa-university mr-2 text-gray-400"></i>香港中文大学 联合博士 (2007.01 – 2011.01)</li>
+                    <li><i class="fas fa-university mr-2 text-gray-400"></i>国防科技大学 工程硕士 (2005.09 – 2007.01)</li>
+                    <li><i class="fas fa-university mr-2 text-gray-400"></i>国防科技大学 工学学士 (2001.09 – 2005.06)</li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- 2. 工作经历 -->
+              <div class="collapse collapse-arrow join-item border-b border-gray-100">
+                <input type="radio" name="faculty-accordion" /> 
+                <div class="collapse-title text-base font-medium hover:bg-gray-50 flex items-center gap-3 py-4">
+                  <i class="fas fa-briefcase text-slate-500 w-6"></i> 工作经历
+                </div>
+                <div class="collapse-content text-base text-gray-700 pt-2">
+                  <ul class="space-y-3 list-disc list-inside">
+                    <li>中山大学地理空间工程与科学学院 副教授 (2022.05 – 至今)</li>
+                    <li>厦门大学信息科学与工程学院高级工程师 (2018.04 – 2022.04)</li>
+                    <li>厦门大学信息科学与工程学院博士后 (2014.02 – 2017.02)</li>
+                    <li>国防科技大学电子学院空间所 讲师 (2012.01 – 2017.03)</li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- 3. 国际交流 -->
+              <div class="collapse collapse-arrow join-item border-b border-gray-100">
+                <input type="radio" name="faculty-accordion" /> 
+                <div class="collapse-title text-base font-medium hover:bg-gray-50 flex items-center gap-3 py-4">
+                  <i class="fas fa-globe text-slate-500 w-6"></i> 国际交流经历
+                </div>
+                <div class="collapse-content text-base text-gray-700 pt-2">
+                  <ul class="space-y-3 list-disc list-inside">
+                    <li>澳大利亚悉尼科技大学访问学者 (2019.06 – 2019.09)</li>
+                    <li>加拿大滑铁卢大学访问学者 (2015.08 – 2015.10)</li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- 4. 学会服务 -->
+              <div class="collapse collapse-arrow join-item border-b border-gray-100">
+                <input type="radio" name="faculty-accordion" /> 
+                <div class="collapse-title text-base font-medium hover:bg-gray-50 flex items-center gap-3 py-4">
+                  <i class="fas fa-users text-slate-500 w-6"></i> 科学学会服务
+                </div>
+                <div class="collapse-content text-base text-gray-700 pt-2">
+                  <ul class="space-y-3 list-disc list-inside">
+                    <li>IEEE高级会员 / 中国图像与图形学会高级会员</li>
+                    <li>ISPRS “激光雷达、激光测高与多传感器融合”工作组主席</li>
+                    <li>中国遥感应用协会妇女科技委员会副主席</li>
+                    <li>国际数字地球学会中国国家委员会激光雷达分会副秘书长</li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- 5. 编辑职务 -->
+              <div class="collapse collapse-arrow join-item border-b border-gray-100">
+                <input type="radio" name="faculty-accordion" /> 
+                <div class="collapse-title text-base font-medium hover:bg-gray-50 flex items-center gap-3 py-4">
+                  <i class="fas fa-edit text-slate-500 w-6"></i> 学术期刊编辑职务
+                </div>
+                <div class="collapse-content text-base text-gray-700 pt-2">
+                  <ul class="space-y-3 list-disc list-inside">
+                    <li>IEEE Geoscience and Remote Sensing Magazine 副主编 (JCR Q1, IF=14.6)</li>
+                    <li>IEEE Transactions on Geoscience and Remote Sensing 副主编 (JCR Q1, IF=8.2)</li>
+                    <li>International Journal of Applied Earth Observation and Geoinformation 副主编 (JCR Q1, IF=7.6)</li>
+                    <li>Geo-spatial Information Science (JCR Q1) 编辑委员会成员</li>
+                    <li>Photogrammetric Record (JCR Q3) 编辑委员会成员</li>
+                    <li>Journal of Innovation (IF=32) 初级编辑</li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- 6. 荣誉 -->
+              <div class="collapse collapse-arrow join-item border-b border-gray-100">
+                <input type="radio" name="faculty-accordion" /> 
+                <div class="collapse-title text-base font-medium hover:bg-gray-50 flex items-center gap-3 py-4">
+                  <i class="fas fa-trophy text-slate-500 w-6"></i> 荣誉
+                </div>
+                <div class="collapse-content text-base text-gray-700 pt-2">
+                  <ul class="space-y-3 list-disc list-inside">
+                    <li>2023年《国际应用地球观测与地理信息杂志》最佳论文奖</li>
+                    <li>2023年《摄影测量记录》最佳编辑委员会成员</li>
+                    <li>中国遥感应用协会杰出青年女科学家奖（特别奖），2023年</li>
+                    <li>2023年首届全球可持续发展国际空间信息高端论坛最佳论文奖</li>
+                    <li>中国测绘与制图学会科学技术奖二等奖（排名第一），表彰2022年“高速公路智能化关键技术与工程应用”</li>
+                    <li>IEEE 应用地球观测与遥感精选期刊（JSTARS）2019年最佳评审人奖杰出评审人奖</li>
+                    <li>2019年福建省自然科学奖三等奖（排名第二），三维点云智能物体探测理论与方法</li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- 7. 研究项目 -->
+              <div class="collapse collapse-arrow join-item border-b border-gray-100">
+                <input type="radio" name="faculty-accordion" /> 
+                <div class="collapse-title text-base font-medium hover:bg-gray-50 flex items-center gap-3 py-4">
+                  <i class="fas fa-flask text-slate-500 w-6"></i> 研究项目
+                </div>
+                <div class="collapse-content text-base text-gray-700 pt-2">
+                  <ul class="space-y-3 list-disc list-inside">
+                    <li>2024-01-2027-12, 国家自然科学基金面上项目, 车载三维点云道路要素单体化分割理论与方法研究, 主持</li>
+                    <li>2024-01-2026-12, 广东省自然科学基金面上项目, 湾区城市数字孪生高精度三维点云部件级分割与交互式分析, 主持</li>
+                    <li>2022-12-2023-12, 国家电网, 输电线路三维激光点云数据采集服务, 主持</li>
+                    <li>2022-08-2023-06, 国家电网, 激光点云数据规整技术支持服务, 主持</li>
+                    <li>2022-08-2024-09, 科技委项目, 低空无人机载激光雷达点云数据获取与语义分割技术, 主持</li>
+                    <li>2022-01-2022-12, 广东省“海外名师”项目, 大规模三维点云地物要素语义分割研究, 主持</li>
+                    <li>2021-04-2021-05, 福州大学, 彩色点云数据校正测试服务, 主持</li>
+                    <li>2021-03-2022-03， ISPRS国际摄影测量和遥感学会科学计划，城市地下空间三维语义映射， 联合主持</li>
+                    <li>2020-11-2021-04, 福州大学, 点云数据采集服务, 主持</li>
+                    <li>2020-06-2021-12, 中山大学, 变化检测融合决策技术研究, 主持</li>
+                    <li>2018-01-2022-12, 国家自然科学基金面上项目, 基于三维点云的高清地图快速语义标注理论与方法研究, 主持</li>
+                    <li>2016-05-2018-05, 科技委项目, 激光雷达目标特性建模, 主持</li>
+                    <li>2016-01-2019-12, 国家自然科学基金青年基金项目, 多回波地面激光扫描点云的叶簇遮挡目标特性建模, 主持</li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- 8. 教学 -->
+              <div class="collapse collapse-arrow join-item">
+                <input type="radio" name="faculty-accordion" /> 
+                <div class="collapse-title text-base font-medium hover:bg-gray-50 flex items-center gap-3 py-4">
+                  <i class="fas fa-chalkboard-teacher text-slate-500 w-6"></i> 教学
+                </div>
+                <div class="collapse-content text-base text-gray-700 pt-2">
+                  <p class="font-bold mb-1">课程：</p>
+                  <ul class="space-y-1 list-disc list-inside mb-3">
+                    <li>计算机视觉与模式识别（中文，中山大学大三本科生）</li>
+                    <li>人工智能技术（中文，澳门科技大学一年级研究生）</li>
+                    <li>科学写作（中文，中山大学博士生）</li>
+                    <li>激光雷达遥感（中文，2022年）</li>
+                  </ul>
+                  <p class="font-bold mb-1">讲座：</p>
+                  <ul class="space-y-1 list-disc list-inside mb-3">
+                    <li>2022年空天地海智能感知技术暑期学校, 基于深度学习的三维点云植被提取研究</li>
+                  </ul>
+                  <p class="font-bold mb-1">指导：</p>
+                  <ul class="space-y-1 list-disc list-inside">
+                    <li>指导2023级本科生校级大学生创新训练项目, 多源建筑物数据的多尺度表达</li>
+                    <li>指导2022级本科生校级大学生创新训练项目， 基于LiDAR三维点云数据的树种分类和碳储量估算</li>
+                    <li>指导2021级本科生校级大学生创新训练项目, 基于点云的树木碳储量计算</li>
+                    <li>面向新工科的人工智能与测绘课程融合教改思考与实践, 《地理空间信息》</li>
+                  </ul>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== 学生板块 ==================== -->
+      <div class="flex-1">
+      
+      <!-- 博士生 -->
+      <section id="phd" class="scroll-mt-32 mt-24">
+        <h3 class="text-2xl font-bold text-primary mb-6 pl-3 border-l-4 border-primary flex items-center">
+          博士生 <span class="text-base font-normal text-gray-400 ml-3">PhD Students</span>
+        </h3>
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
+          
+          <!-- 孙文涛 -->
+          <div class="hover-3d w-48 mx-auto">
+            <figure class="w-full rounded-2xl relative overflow-hidden aspect-[3/4]">
+              <img src="img/people/swt.jpg" alt="孙文涛" class="object-cover w-full h-full" onerror="this.src='https://via.placeholder.com/300x400?text=SWT'"/>
+              <div class="absolute bottom-0 left-0 right-0  bg-[#003366]/60 backdrop-blur-sm p-3 text-center">
+                <h3 class="text-sm font-bold text-white">孙文涛</h3>
+              </div>
+            </figure>
+            <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+          </div>
+
+          <!-- 韩汀 -->
+          <div class="hover-3d w-48 mx-auto">
+            <figure class="w-full rounded-2xl relative overflow-hidden aspect-[3/4]">
+              <img src="img/people/HT.jpg" alt="韩汀" class="object-cover w-full h-full" onerror="this.src='https://via.placeholder.com/300x400?text=HT'"/>
+              <div class="absolute bottom-0 left-0 right-0 bg-[#003366]/60 backdrop-blur-sm p-3 text-center">
+                <h3 class="text-sm font-bold text-white">韩汀</h3>
+              </div>
+            </figure>
+            <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+          </div>
+
+          <!-- 马津 -->
+          <div class="hover-3d w-48 mx-auto">
+            <figure class="w-full rounded-2xl relative overflow-hidden aspect-[3/4]">
+              <img src="img/people/maj.jpg" alt="马津" class="object-cover w-full h-full" onerror="this.src='https://via.placeholder.com/300x400?text=MJ'"/>
+              <div class="absolute bottom-0 left-0 right-0 bg-[#003366]/60 backdrop-blur-sm p-3 text-center">
+                <h3 class="text-sm font-bold text-white">马津</h3>
+              </div>
+            </figure>
+            <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+          </div>
+
+          <!-- 罗阳 -->
+          <div class="hover-3d w-48 mx-auto">
+            <figure class="w-full rounded-2xl relative overflow-hidden aspect-[3/4]">
+              <img src="img/people/YangLuo.jpg" alt="罗阳" class="object-cover w-full h-full" onerror="this.src='https://via.placeholder.com/300x400?text=YL'"/>
+              <div class="absolute bottom-0 left-0 right-0 bg-[#003366]/60 backdrop-blur-sm p-3 text-center">
+                <h3 class="text-sm font-bold text-white">罗阳</h3>
+              </div>
+            </figure>
+            <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+          </div>
+
+          <!-- 柯文宇 -->
+          <div class="hover-3d w-48 mx-auto">
+            <figure class="w-full rounded-2xl relative overflow-hidden aspect-[3/4]">
+              <img src="img/people/WenyuKe.jpg" alt="柯文宇" class="object-cover w-full h-full" onerror="this.src='https://via.placeholder.com/300x400?text=KW'"/>
+              <div class="absolute bottom-0 left-0 right-0 bg-[#003366]/60 backdrop-blur-sm p-3 text-center">
+                <h3 class="text-sm font-bold text-white">柯文宇</h3>
+              </div>
+            </figure>
+            <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- 硕士生 -->
+      <section id="master" class="scroll-mt-32 mt-24">
+        <h3 class="text-2xl font-bold text-primary mb-6 pl-3 border-l-4 border-secondary flex items-center">
+          硕士生 <span class="text-base font-normal text-gray-400 ml-3">Master Students</span>
+        </h3>
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
+          
+          <!-- 王朝磊 -->
+          <div class="hover-3d w-48 mx-auto">
+            <figure class="w-full rounded-2xl relative overflow-hidden aspect-[3/4]">
+              <img src="img/people/WCL.jpg" alt="王朝磊" class="object-cover w-full h-full" onerror="this.src='https://via.placeholder.com/300x400?text=WCL'"/>
+              <div class="absolute bottom-0 left-0 right-0 bg-[#003366]/60 backdrop-blur-sm p-3 text-center">
+                <h3 class="text-sm font-bold text-white">王朝磊</h3>
+              </div>
+            </figure>
+            <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+          </div>
+
+          <!-- 杜雨萌 -->
+          <div class="hover-3d w-48 mx-auto">
+            <figure class="w-full rounded-2xl relative overflow-hidden aspect-[3/4]">
+              <img src="img/people/dym.jpg" alt="杜雨萌" class="object-cover w-full h-full" onerror="this.src='https://via.placeholder.com/300x400?text=DYM'"/>
+              <div class="absolute bottom-0 left-0 right-0 bg-[#003366]/60 backdrop-blur-sm p-3 text-center">
+                <h3 class="text-sm font-bold text-white">杜雨萌</h3>
+              </div>
+            </figure>
+            <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+          </div>
+
+          <!-- 黄子龙 -->
+          <div class="hover-3d w-48 mx-auto">
+            <figure class="w-full rounded-2xl relative overflow-hidden aspect-[3/4]">
+              <img src="img/people/hzl.jpg" alt="黄子龙" class="object-cover w-full h-full" onerror="this.src='https://via.placeholder.com/300x400?text=HZL'"/>
+              <div class="absolute bottom-0 left-0 right-0 bg-[#003366]/60 backdrop-blur-sm p-3 text-center">
+                <h3 class="text-sm font-bold text-white">黄子龙</h3>
+              </div>
+            </figure>
+            <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+          </div>
+
+          <!-- 黄晓彬 -->
+          <div class="hover-3d w-48 mx-auto">
+            <figure class="w-full rounded-2xl relative overflow-hidden aspect-[3/4]">
+              <img src="img/people/XiaobinHuang.jpg" alt="黄晓彬" class="object-cover w-full h-full" onerror="this.src='https://via.placeholder.com/300x400?text=XBH'"/>
+              <div class="absolute bottom-0 left-0 right-0 bg-[#003366]/60 backdrop-blur-sm p-3 text-center">
+                <h3 class="text-sm font-bold text-white">黄晓彬</h3>
+              </div>
+            </figure>
+            <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+          </div>
+
+          <!-- 欧阳洁 -->
+          <div class="hover-3d w-48 mx-auto">
+            <figure class="w-full rounded-2xl relative overflow-hidden aspect-[3/4]">
+              <img src="img/people/JieOuyang.jpg" alt="欧阳洁" class="object-cover w-full h-full" onerror="this.src='https://via.placeholder.com/300x400?text=OJ'"/>
+              <div class="absolute bottom-0 left-0 right-0 bg-[#003366]/60 backdrop-blur-sm p-3 text-center">
+                <h3 class="text-sm font-bold text-white">欧阳洁</h3>
+              </div>
+            </figure>
+            <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+          </div>
+
+          <!-- 何忠杰 -->
+          <div class="hover-3d w-48 mx-auto">
+            <figure class="w-full rounded-2xl relative overflow-hidden aspect-[3/4]">
+              <img src="img/people/ZhongjieHe.jpg" alt="何忠杰" class="object-cover w-full h-full" onerror="this.src='https://via.placeholder.com/300x400?text=ZJH'"/>
+              <div class="absolute bottom-0 left-0 right-0 bg-[#003366]/60 backdrop-blur-sm p-3 text-center">
+                <h3 class="text-sm font-bold text-white">何忠杰</h3>
+              </div>
+            </figure>
+            <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 本科生 -->
+      <section id="bachelor" class="scroll-mt-32 mt-24">
+        <h3 class="text-2xl font-bold text-primary mb-6 pl-3 border-l-4 border-secondary flex items-center">
+          本科生 <span class="text-base font-normal text-gray-400 ml-3">Bachelor Students</span>
+        </h3>
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
+          
+          <!-- 陈桓 -->
+          <div class="hover-3d w-48 mx-auto">
+            <figure class="w-full rounded-2xl relative overflow-hidden aspect-[3/4]">
+              <img src="img/people/HuanChen.jpg" alt="陈桓" class="object-cover w-full h-full" onerror="this.src='https://via.placeholder.com/300x400?text=HC'"/>
+              <div class="absolute bottom-0 left-0 right-0 bg-[#003366]/60 backdrop-blur-sm p-3 text-center">
+                <h3 class="text-sm font-bold text-white">陈桓</h3>
+              </div>
+            </figure>
+            <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+          </div>
+
+          <!-- 陈春松 -->
+          <div class="hover-3d w-48 mx-auto">
+            <figure class="w-full rounded-2xl relative overflow-hidden aspect-[3/4]">
+              <img src="img/people/ChunsongChen.jpg" alt="陈春松" class="object-cover w-full h-full" onerror="this.src='https://via.placeholder.com/300x400?text=CC'"/>
+              <div class="absolute bottom-0 left-0 right-0 bg-[#003366]/60 backdrop-blur-sm p-3 text-center">
+                <h3 class="text-sm font-bold text-white">陈春松</h3>
+              </div>
+            </figure>
+            <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+          </div>
+
+          <!-- 邓杏儿 -->
+          <div class="hover-3d w-48 mx-auto">
+            <figure class="w-full rounded-2xl relative overflow-hidden aspect-[3/4]">
+              <img src="img/people/dxe.jpg" alt="邓杏儿" class="object-cover w-full h-full" onerror="this.src='https://via.placeholder.com/300x400?text=DXE'"/>
+              <div class="absolute bottom-0 left-0 right-0 bg-[#003366]/60 backdrop-blur-sm p-3 text-center">
+                <h3 class="text-sm font-bold text-white">邓杏儿</h3>
+              </div>
+            </figure>
+            <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+          </div>
+
+          <!-- 侯懿宸 -->
+          <div class="hover-3d w-48 mx-auto">
+            <figure class="w-full rounded-2xl relative overflow-hidden aspect-[3/4]">
+              <img src="img/people/hyc.jpg" alt="侯懿宸" class="object-cover w-full h-full" onerror="this.src='https://via.placeholder.com/300x400?text=HYC'"/>
+              <div class="absolute bottom-0 left-0 right-0 bg-[#003366]/60 backdrop-blur-sm p-3 text-center">
+                <h3 class="text-sm font-bold text-white">侯懿宸</h3>
+              </div>
+            </figure>
+            <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+          </div>
+
+          <!-- 王梓佳 -->
+          <div class="hover-3d w-48 mx-auto">
+            <figure class="w-full rounded-2xl relative overflow-hidden aspect-[3/4]">
+              <img src="img/people/wzj.jpg" alt="王梓佳" class="object-cover w-full h-full" onerror="this.src='https://via.placeholder.com/300x400?text=WZJ'"/>
+              <div class="absolute bottom-0 left-0 right-0 bg-[#003366]/60 backdrop-blur-sm p-3 text-center">
+                <h3 class="text-sm font-bold text-white">王梓佳</h3>
+              </div>
+            </figure>
+            <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+          </div>
+
+          <!-- 任益澜 -->
+          <div class="hover-3d w-48 mx-auto">
+            <figure class="w-full rounded-2xl relative overflow-hidden aspect-[3/4]">
+              <img src="img/people/ryl.jpg" alt="任益澜" class="object-cover w-full h-full" onerror="this.src='https://via.placeholder.com/300x400?text=RYL'"/>
+              <div class="absolute bottom-0 left-0 right-0 bg-[#003366]/60 backdrop-blur-sm p-3 text-center">
+                <h3 class="text-sm font-bold text-white">任益澜</h3>
+              </div>
+            </figure>
+            <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+          </div>
+
+          <!-- 虞启淇 -->
+          <div class="hover-3d w-48 mx-auto">
+            <figure class="w-full rounded-2xl relative overflow-hidden aspect-[3/4]">
+              <img src="img/people/yqq.jpg" alt="虞启淇" class="object-cover w-full h-full" onerror="this.src='https://via.placeholder.com/300x400?text=YQQ'"/>
+              <div class="absolute bottom-0 left-0 right-0 bg-[#003366]/60 backdrop-blur-sm p-3 text-center">
+                <h3 class="text-sm font-bold text-white">虞启淇</h3>
+              </div>
+            </figure>
+            <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 毕业生 -->
+      <section id="graduate" class="scroll-mt-32 mt-24">
+        <h3 class="text-2xl font-bold text-primary mb-6 pl-3 border-l-4 border-secondary flex items-center">
+          毕业生 <span class="text-base font-normal text-gray-400 ml-3">Graduates</span>
+        </h3>
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
+          
+          <!-- Naftaly -->
+          <div class="hover-3d w-48 mx-auto">
+            <figure class="w-full rounded-2xl relative overflow-hidden aspect-[3/4]">
+              <img src="img/people/Naftaly.png" alt="Naftaly" class="object-cover w-full h-full" onerror="this.src='https://via.placeholder.com/300x400?text=Naftaly'"/>
+              <div class="absolute bottom-0 left-0 right-0 bg-[#003366]/60 backdrop-blur-sm p-3 text-center">
+                <h3 class="text-sm font-bold text-white">Naftaly</h3>
+              </div>
+            </figure>
+            <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+          </div>
+
+          <!-- 刘晓雪 -->
+          <div class="hover-3d w-48 mx-auto">
+            <figure class="w-full rounded-2xl relative overflow-hidden aspect-[3/4]">
+              <img src="img/people/lxx.jpg" alt="刘晓雪" class="object-cover w-full h-full" onerror="this.src='https://via.placeholder.com/300x400?text=LXX'"/>
+              <div class="absolute bottom-0 left-0 right-0 bg-[#003366]/60 backdrop-blur-sm p-3 text-center">
+                <h3 class="text-sm font-bold text-white">刘晓雪</h3>
+              </div>
+            </figure>
+            <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+          </div>
+
+          <!-- 罗智鹏 -->
+          <div class="hover-3d w-48 mx-auto">
+            <figure class="w-full rounded-2xl relative overflow-hidden aspect-[3/4]">
+              <img src="img/people/lzp.png" alt="罗智鹏" class="object-cover w-full h-full" onerror="this.src='https://via.placeholder.com/300x400?text=LZP'"/>
+              <div class="absolute bottom-0 left-0 right-0 bg-[#003366]/60 backdrop-blur-sm p-3 text-center">
+                <h3 class="text-sm font-bold text-white">罗智鹏</h3>
+              </div>
+            </figure>
+            <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+          </div>
+
+          <!-- 黄鹏頔 -->
+          <div class="hover-3d w-48 mx-auto">
+            <figure class="w-full rounded-2xl relative overflow-hidden aspect-[3/4]">
+              <img src="img/people/hpd.png" alt="黄鹏頔" class="object-cover w-full h-full" onerror="this.src='https://via.placeholder.com/300x400?text=HPD'"/>
+              <div class="absolute bottom-0 left-0 right-0 bg-[#003366]/60 backdrop-blur-sm p-3 text-center">
+                <h3 class="text-sm font-bold text-white">黄鹏頔</h3>
+              </div>
+            </figure>
+            <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+          </div>
+
+          <!-- 张帅 -->
+          <div class="hover-3d w-48 mx-auto">
+            <figure class="w-full rounded-2xl relative overflow-hidden aspect-[3/4]">
+              <img src="img/people/zs.jpg" alt="张帅" class="object-cover w-full h-full" onerror="this.src='https://via.placeholder.com/300x400?text=ZS'"/>
+              <div class="absolute bottom-0 left-0 right-0 bg-[#003366]/60 backdrop-blur-sm p-3 text-center">
+                <h3 class="text-sm font-bold text-white">张帅</h3>
+              </div>
+            </figure>
+            <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+          </div>
+
+          <!-- 谢相依 -->
+          <div class="hover-3d w-48 mx-auto">
+            <figure class="w-full rounded-2xl relative overflow-hidden aspect-[3/4]">
+              <img src="img/people/xxy.jpg" alt="谢相依" class="object-cover w-full h-full" onerror="this.src='https://via.placeholder.com/300x400?text=XXY'"/>
+              <div class="absolute bottom-0 left-0 right-0 bg-[#003366]/60 backdrop-blur-sm p-3 text-center">
+                <h3 class="text-sm font-bold text-white">谢相依</h3>
+              </div>
+            </figure>
+            <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 交流访问 -->
+      <section id="visitor" class="scroll-mt-32 mt-24">
+        <h3 class="text-2xl font-bold text-primary mb-6 pl-3 border-l-4 border-secondary flex items-center">
+          交流访问 <span class="text-base font-normal text-gray-400 ml-3">Visitors</span>
+        </h3>
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
+          
+          <!-- 隋佳璐 -->
+          <div class="hover-3d w-48 mx-auto">
+            <figure class="w-full rounded-2xl relative overflow-hidden aspect-[3/4]">
+              <img src="img/people/sjl.jpg" alt="隋佳璐" class="object-cover w-full h-full" onerror="this.src='https://via.placeholder.com/300x400?text=SJL'"/>
+              <div class="absolute bottom-0 left-0 right-0 bg-[#003366]/60 backdrop-blur-sm p-3 text-center">
+                <h3 class="text-sm font-bold text-white">隋佳璐</h3>
+              </div>
+            </figure>
+            <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+          </div>
+
+          <!-- 徐禧 -->
+          <div class="hover-3d w-48 mx-auto">
+            <figure class="w-full rounded-2xl relative overflow-hidden aspect-[3/4]">
+              <img src="img/people/xx.jpg" alt="徐禧" class="object-cover w-full h-full" onerror="this.src='https://via.placeholder.com/300x400?text=XX'"/>
+              <div class="absolute bottom-0 left-0 right-0 bg-[#003366]/60 backdrop-blur-sm p-3 text-center">
+                <h3 class="text-sm font-bold text-white">徐禧</h3>
+              </div>
+            </figure>
+            <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+          </div>
+
+        </div>
+      </section>
+
+    </div>
+    </div>
+  </main>
+
+  <!-- ========================
+       3. 页脚 (Fixed Footer)
+       ======================== -->
+  <footer class="footer footer-center p-6 bg-[#003366] text-white mt-auto">
+    <aside>
+      <!-- 这里的 ID 是为了防止与上面的地图冲突，通常页脚放简单的版权信息即可 -->
+      <!-- 如果需要这里也显示地图，请确保 ID 不同或复用逻辑 -->
+      <div class="mb-2 opacity-80 text-sm">中山大学 · 珠海</div>
+      <p class="font-bold text-lg">中山大学遥感科学与技术学院 3DAILab</p>
+    </aside>
+  </footer>
+
+  <!-- 4. 侧边栏滚动监听脚本 -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. 获取所有侧边栏链接和对应的内容区块
+      const links = document.querySelectorAll('aside .sidebar-link');
+      const sections = document.querySelectorAll('section[id]');
+      
+      // 2. 滚动监听函数
+      function onScroll() {
+        let currentId = '';
+        
+        // 遍历所有区块
+        sections.forEach(section => {
+          const sectionTop = section.offsetTop;
+          const sectionHeight = section.clientHeight;
+          // 这里的 200 是偏移量，可以根据顶部导航栏高度调整
+          // 当滚动距离 >= 区块顶部 - 偏移量 时，认为进入该区块
+          if (window.scrollY >= sectionTop - 200) {
+            currentId = section.getAttribute('id');
+          }
+        });
+
+        // 如果在页面最顶部，默认激活第一个
+        if (window.scrollY < 100) {
+            currentId = 'faculty';
+        }
+
+        // 更新链接样式
+        links.forEach(link => {
+          link.classList.remove('active');
+          // 获取链接的 href 属性 (例如 #phd) 并去掉 #
+          const href = link.getAttribute('href').substring(1);
+          if (href === currentId) {
+            link.classList.add('active');
+          }
+        });
+      }
+
+      // 3. 绑定滚动事件
+      window.addEventListener('scroll', onScroll);
+      
+      // 4. 初始化一次 (防止刷新页面后状态不对)
+      onScroll();
+    });
+    
+    // 访客地图
+    var _clustrmaps = {key:'sail-demo',path:'/',id:'clustrmaps'};
+  </script>
+  <script src="https://cdn.clustrmaps.com/map_v2.js"></script>
+</body>
+</html>

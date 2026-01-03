@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <title>动态 | 3DAILab</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- 1. 引入 DaisyUI 和 Tailwind -->
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css" rel="stylesheet" type="text/css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- 2. 引入 FontAwesome 图标 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- 3. 配置主题色 -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#003366',    // 深蓝
+            secondary: '#3793ee',  // 亮蓝
+            accent: '#f8f9fa',     // 浅灰背景
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* 隐藏滚动条 */
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+  </style>
+</head>
+
+<body class="font-sans min-h-screen bg-gray-50 text-slate-800 flex flex-col">
+
+  <!-- ========================
+       2. 主体内容
+       ======================== -->
+  <main class="flex-grow container mx-auto px-4 py-8 pt-28">
+    
+    <div class="max-w-4xl mx-auto">
+      
+      <!-- 页面标题 -->
+      <div class="mb-10 border-l-8 border-primary pl-4">
+        <h1 class="text-4xl font-bold text-primary">团队动态</h1>
+        <p class="text-gray-500 text-lg">Recent Events</p>
+      </div>
+
+      <!-- 动态时间轴容器 (使用 DaisyUI Timeline) -->
+      <div class="card bg-white shadow-xl border border-gray-100">
+        <div class="card-body">
+          
+          <!-- timeline-compact: 紧凑模式(单侧)，timeline-vertical: 垂直方向 -->
+          <ul class="timeline timeline-vertical timeline-compact">
+            
+            <!-- 动态 1 -->
+            <li>
+              <div class="timeline-middle">
+                <i class="fas fa-check-circle text-primary text-xl"></i>
+              </div>
+              <div class="timeline-end timeline-box w-full mb-8 bg-blue-50 border-none shadow-sm p-4">
+                <div class="flex flex-col">
+                  <span class="font-bold text-primary text-lg mb-1">2025-04-20</span>
+                  <p class="text-base text-gray-700">陈一平博士被任命为国际数字地球学会中国全国委员会大模型工作组主席。</p>
+                </div>
+              </div>
+              <hr class="bg-primary"/>
+            </li>
+            
+            <!-- 动态 2 -->
+            <li>
+              <hr class="bg-primary"/>
+              <div class="timeline-middle">
+                <i class="fas fa-award text-secondary text-xl"></i>
+              </div>
+              <div class="timeline-end timeline-box w-full mb-8 bg-white border border-gray-200 shadow-sm p-4 hover:shadow-md transition-shadow">
+                <div class="flex flex-col">
+                  <span class="font-bold text-primary text-lg mb-1">2025-02-28</span>
+                  <p class="text-base text-gray-700">陈一平博士被选为<span class="font-bold text-secondary">国家级青年学者</span>。</p>
+                </div>
+              </div>
+              <hr class="bg-primary"/>
+            </li>
+            
+            <!-- 动态 3 -->
+            <li>
+              <hr class="bg-primary"/>
+              <div class="timeline-middle">
+                <i class="fas fa-file-alt text-green-600 text-xl"></i>
+              </div>
+              <div class="timeline-end timeline-box w-full mb-4 bg-white border border-gray-200 shadow-sm p-4 hover:shadow-md transition-shadow">
+                <div class="flex flex-col">
+                  <span class="font-bold text-primary text-lg mb-1">2025-02-27</span>
+                  <p class="text-base text-gray-700">
+                    论文 <span class="italic font-semibold">Scene4U： Hierarchical Layered 3D Scene Reconstruction from Single Panoramic Image for Your Immerse Exploration</span> 被 
+                    <span class="badge badge-success text-white font-bold">CVPR 2025</span> 录用！
+                  </p>
+                </div>
+              </div>
+            </li>
+
+            <!-- 你可以在这里继续添加 <li>...</li> -->
+            
+          </ul>
+        </div>
+      </div>
+      
+    </div>
+  </main>
+
+  <!-- ========================
+       3. 页脚 (Fixed Footer)
+       ======================== -->
+  <footer class="footer footer-center p-6 bg-[#003366] text-white mt-auto">
+    <aside>
+      <!-- 这里的 ID 是为了防止与上面的地图冲突，通常页脚放简单的版权信息即可 -->
+      <!-- 如果需要这里也显示地图，请确保 ID 不同或复用逻辑 -->
+      <div class="mb-2 opacity-80 text-sm">中山大学 · 珠海</div>
+      <p class="font-bold text-lg">中山大学遥感科学与技术学院 3DAILab</p>
+    </aside>
+  </footer>
+
+  <!-- 4. 脚本 -->
+  <script src="js/common.js"></script>
+  <script src="https://cdn.clustrmaps.com/map_v2.js"></script>
+  
+  <script>
+    // 访客地图
+    var _clustrmaps = {key:'sail-demo',path:'/',id:'clustrmaps'};
+  </script>
+
+</body>
+</html>

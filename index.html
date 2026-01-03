@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>主页 | 3DAILab</title>
+  
+  <!-- 1. 引入核心框架: DaisyUI + Tailwind CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css" rel="stylesheet" type="text/css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- 2. 引入图标库 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- 3. 配置 Tailwind 主题色 -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#003366',    // 你的深蓝品牌色
+            secondary: '#3793ee',  // 你的浅蓝高亮色
+            accent: '#f8f9fa',     // 背景灰白
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- 4. 必要的自定义样式 (覆盖默认或处理特殊动画) -->
+  <style>
+    /* 视差背景动画 */
+    .bg-slide {
+      position: absolute; inset: 0;
+      background-size: cover; background-position: center;
+      opacity: 0; transition: opacity 1s ease-in-out;
+    }
+    .bg-slide.active { opacity: 1; }
+    
+    /* 缩略图选中高亮 */
+    .thumb-btn.active { border-color: #fff; transform: scale(1.1); box-shadow: 0 0 10px rgba(255,255,255,0.5); }
+    
+    /* 隐藏滚动条但允许滚动 */
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  </style>
+</head>
+
+<body class="font-sans min-h-screen flex flex-col relative text-slate-800">
+
+  <!-- ========================
+       LAYER 0: 全屏背景轮播 (Fixed定位)
+       ======================== -->
+  <div id="bg-container" class="fixed inset-0 -z-50 bg-gray-900">
+    <!-- 图片路径请确保正确 -->
+    <div class="bg-slide active" style="background-image: url('img/team/CHINA_3DV_2024.jpg');"></div>
+    <div class="bg-slide" style="background-image: url('img/team/1.jpg');"></div>
+    <div class="bg-slide" style="background-image: url('img/team/2.jpg');"></div>
+  </div>
+
+  <!-- ========================
+       LAYER 1: 浅蓝遮罩层
+       ======================== -->
+  <!-- <div class="fixed inset-0 -z-40 bg-sky-100/30 backdrop-blur-[3px]"></div> -->
+  <div class="fixed inset-0 -z-40 bg-slate-900/60 backdrop-blur-[2px]"></div>
+  <!-- ========================
+       LAYER 2: 导航栏 (固定顶部)
+       ======================== -->
+  <!-- 使用 nav.html 动态加载，但在单文件演示中我直接写在这里 -->
+  <div id="nav-placeholder"></div>
+
+ <!-- ========================
+       LAYER 3: 主体内容 (可滚动)
+       ======================== -->
+  
+  <!-- <main class="flex-grow w-full px-8 lg:px-10 py-12 pt-80 z-10">
+    
+    <!== Grid 布局 ==>
+    <!== gap-12: 增加左右两块内容的间距 ==>
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+
+      <!== 左侧：实验室简介 (占据 7/12) ==>
+      <!== 之前是 col-span-8，改成 7 可以让中间空隙更大，视觉上更分离 ==>
+      <div class="lg:col-start-1 lg:col-span-6 xl:col-start-1 xl:col-span-6">
+        <!== DaisyUI Glass Card ==>
+        <div class="card glass h-full shadow-2xl animate-fade-in-up border-t-4 border-primary">
+          <div class="card-body p-8 lg:p-10">
+            <h2 class="card-title text-4xl mb-6 border-b border-gray-400/30 pb-4 text-primary flex items-center font-bold">
+              <i class="fa-solid fa-school mr-4"></i> 简介 Introduction
+            </h2>
+            
+            <div class="text-justify leading-loose text-lg text-slate-900 font-medium space-y-6">
+              <p>陈一平副教授领衔的<strong>“三维时空人工智能实验室”（3D Spatiotemporal AI Lab）</strong>隶属于
+                <strong>中山大学遥感科学与技术学院</strong>， 坐落于广东珠海。实验室
+                面向激光雷达遥感与智能三维点云理解的前沿需求。</p>
+              
+              <p>聚焦于以下关键技术研究：
+                <div class="flex flex-wrap gap-3 mt-2">
+                  <span class="badge badge-primary badge-lg py-4 px-4 text-base">三维点云表征学习</span>
+                  <span class="badge badge-primary badge-lg py-4 px-4 text-base">遥感要素提取</span>
+                  <span class="badge badge-primary badge-lg py-4 px-4 text-base">三维场景生成</span>
+                  <span class="badge badge-primary badge-lg py-4 px-4 text-base">时空大模型</span>
+                </div>
+              </p>
+              
+              <p>并探索其在实景三维与数字孪生、城市与森林精细化测绘、生态环境可持续发展等领域的应用。课题组致力于多平台、多源传感数据融合，构建稳健可泛化的三维场景理解方法与工程化流程。</p>
+                
+              <p>实验室负责人陈一平副教授入选<strong>国家级青年人才</strong>，共有博硕士研究生10人，本科生7人。
+              近年来在 <strong>ISPRS</strong>、<strong>JPRS</strong>、<strong>CVPR</strong>、<strong>IEEE TGRS</strong> 和 <strong>JAG</strong>
+                等顶刊与顶会发表80余篇高水平论文。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!== 中间留空 (可选，利用 Grid 的 col-start 来强行推开) ==>
+      
+      <!== 右侧：近期动态 (占据 5/12) ==>
+      <!== lg:col-start-8 确保它紧贴右侧区域 ==>
+      <div class="lg:col-start-9 lg:col-span-4 xl:col-start-9 xl:col-span-4">
+        <div class="card glass h-full shadow-2xl border-t-4 border-secondary">
+          <div class="card-body p-8 lg:p-10">
+            <h2 class="card-title text-3xl mb-6 border-b border-gray-400/30 pb-4 text-secondary flex items-center font-bold">
+              <i class="fa-solid fa-bolt mr-4"></i> 近期动态
+            </h2>
+            
+            <!== DaisyUI Timeline ==>
+            <ul class="timeline timeline-vertical timeline-compact -ms-4">
+              <li class="mb-4">
+                <div class="timeline-middle text-primary"><i class="fas fa-circle-check text-xl"></i></div>
+                <div class="timeline-end timeline-box bg-white/90 shadow-md border-none w-full p-5 rounded-lg">
+                  <div class="font-bold text-primary text-xl">2025-04-20</div>
+                  <div class="text-base mt-2 leading-relaxed">陈一平博士被任命为国际数字地球学会中国全国委员会大模型工作组主席。</div>
+                </div>
+                <hr class="bg-primary"/>
+              </li>
+              <li class="mb-4">
+                <hr class="bg-primary"/>
+                <div class="timeline-middle text-primary"><i class="fas fa-circle-check text-xl"></i></div>
+                <div class="timeline-end timeline-box bg-white/90 shadow-md border-none w-full p-5 rounded-lg">
+                  <div class="font-bold text-primary text-xl">2025-02-28</div>
+                  <div class="text-base mt-2 leading-relaxed">陈一平博士被选为国家级青年学者。</div>
+                </div>
+                <hr class="bg-primary"/>
+              </li>
+              <li>
+                <hr class="bg-primary"/>
+                <div class="timeline-middle text-secondary"><i class="fas fa-star text-xl"></i></div>
+                <div class="timeline-end timeline-box bg-white/90 shadow-md border-none w-full p-5 rounded-lg">
+                  <div class="font-bold text-secondary text-xl">2025-02-27</div>
+                  <div class="text-base font-bold mt-2 leading-relaxed">论文 Scene4U 被 CVPR 2025 录用！</div>
+                </div>
+              </li>
+            </ul>
+
+            <div class="card-actions justify-end mt-8">
+              <a href="events.html" class="btn btn-primary btn-outline rounded-full px-8 text-lg hover:scale-105 transition-transform">
+                更多 More <i class="fas fa-arrow-right ml-2"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main> -->
+
+   <!-- ========================
+       LAYER 3: 主体内容
+       ======================== -->
+  <main class="flex-grow w-full px-8 lg:px-16 py-12 pt-40 z-10">
+    
+    <!-- Grid 布局容器 -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-y-16 items-start">
+
+      <!-- ==========================
+           左侧：实验室简介 (占据 1-6 列)
+           ========================== -->
+      <div class="lg:col-start-1 lg:col-span-6 flex flex-col justify-center space-y-10">
+        
+        <!-- 1. 超大标题 (字体调大到 7xl) -->
+        <h1 class="text-6xl lg:text-8xl font-black tracking-tighter text-white leading-[1.1] drop-shadow-2xl">
+          3D Spatiotemporal <br> 
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-cyan-300">AI Laboratory</span>
+        </h1>
+
+        <!-- 2. 副标题 (字体调大到 3xl/4xl) -->
+        <h2 class="text-3xl lg:text-4xl font-bold text-gray-200 mt-2 drop-shadow-md border-l-4 border-blue-400 pl-6">
+          Leveraging <span class="text-blue-300">LiDAR & AI</span> for <br>
+          Digital Twin Reality
+        </h2>
+
+        <!-- 3. 正文内容 (字体调大到 xl，行高增加) -->
+        <div class="text-xl text-gray-100 leading-relaxed space-y-8 font-medium text-justify drop-shadow-sm">
+          <p>
+            <strong class="text-white text-2xl border-b-2 border-blue-400 pb-1">陈一平副教授</strong>
+            领衔的 “三维时空人工智能实验室”（3D Spatiotemporal AI Lab）隶属于
+            <span class="text-white font-bold text-2xl">中山大学遥感科学与技术学院</span>。
+            坐落于广东珠海。实验室面向激光雷达遥感与智能三维点云理解的前沿需求。
+          </p>
+          
+          <p>
+           并探索其在实景三维与数字孪生、城市与森林精细化测绘、生态环境可持续发展等领域的应用。课题组致力于多平台、多源传感数据融合，构建稳健可泛化的三维场景理解方法与工程化流程。
+          </p>
+        </div>
+
+        <!-- 4. 关键技术标签 (字体调大，样式更通透) -->
+        <div class="pt-6">
+          <p class="text-sm uppercase tracking-[0.2em] text-gray-400 font-bold mb-6 border-b border-white/20 pb-2 w-fit">Research Focus</p>
+          <div class="flex flex-wrap gap-4">
+            <!-- 标签字体调大到 lg -->
+            <span class="px-6 py-3 rounded-full border-2 border-white/20 bg-white/5 text-white text-lg font-bold hover:bg-white hover:text-blue-900 transition-all cursor-default backdrop-blur-sm shadow-lg">
+              # 三维点云表征
+            </span>
+            <span class="px-6 py-3 rounded-full border-2 border-white/20 bg-white/5 text-white text-lg font-bold hover:bg-white hover:text-blue-900 transition-all cursor-default backdrop-blur-sm shadow-lg">
+              # 遥感要素提取
+            </span>
+            <span class="px-6 py-3 rounded-full border-2 border-white/20 bg-white/5 text-white text-lg font-bold hover:bg-white hover:text-blue-900 transition-all cursor-default backdrop-blur-sm shadow-lg">
+              # 三维场景生成
+            </span>
+            <span class="px-6 py-3 rounded-full border-2 border-white/20 bg-white/5 text-white text-lg font-bold hover:bg-white hover:text-blue-900 transition-all cursor-default backdrop-blur-sm shadow-lg">
+              # 时空大模型
+            </span>
+          </div>
+        </div>
+
+        <!-- 5. 数据统计 (字体极大) -->
+        <div class="flex gap-16 pt-8">
+          <div>
+            <div class="text-5xl font-black text-white drop-shadow-lg">80+</div>
+            <div class="text-lg text-gray-300 mt-1">顶刊顶会等高水平论文</div>
+          </div>
+          <div>
+            <div class="text-5xl font-black text-white drop-shadow-lg">10+</div>
+            <div class="text-lg text-gray-300 mt-1">博硕研究生</div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ==========================
+           中间留空：第 7, 8 列自动空出
+           ========================== -->
+
+      <!-- ==========================
+           右侧：近期动态 (从第 9 列开始，占 4 列)
+           ========================== -->
+      <div class="lg:col-start-10 lg:col-span-4 space-y-12 mt-4">
+        
+        <!-- 标题 -->
+        <h3 class="text-right text-3xl font-bold text-gray-300 mb-10 hidden lg:block border-b border-white/20 pb-4">
+          Latest News <i class="fas fa-bolt text-yellow-400 ml-2"></i>
+        </h3>
+
+        <!-- 动态项 1 -->
+        <div class="group flex items-start gap-5 flex-row-reverse lg:flex-row text-right lg:text-left hover:-translate-x-2 transition-transform duration-300">
+          <!-- 图标加大 -->
+          <div class="flex-shrink-0 w-20 h-20 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center group-hover:bg-blue-500 group-hover:border-blue-500 transition-all shadow-[0_0_20px_rgba(0,0,0,0.3)]">
+            <i class="fas fa-users-cog text-3xl text-white"></i>
+          </div>
+          <div class="flex-grow pt-1">
+            <h4 class="text-2xl font-bold text-white group-hover:text-blue-300 transition-colors drop-shadow-md">任职更新</h4>
+            <p class="text-base text-gray-400 font-mono mb-3 mt-1">2025-04-20</p>
+            <p class="text-gray-100 leading-relaxed text-lg font-medium">
+              陈一平博士被任命为国际数字地球学会中国全国委员会大模型工作组主席。
+            </p>
+          </div>
+        </div>
+
+        <!-- 动态项 2 -->
+        <div class="group flex items-start gap-5 flex-row-reverse lg:flex-row text-right lg:text-left hover:-translate-x-2 transition-transform duration-300">
+          <div class="flex-shrink-0 w-20 h-20 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center group-hover:bg-blue-500 group-hover:border-blue-500 transition-all shadow-[0_0_20px_rgba(0,0,0,0.3)]">
+            <i class="fas fa-medal text-3xl text-white"></i>
+          </div>
+          <div class="flex-grow pt-1">
+            <h4 class="text-2xl font-bold text-white group-hover:text-blue-300 transition-colors drop-shadow-md">青年学者</h4>
+            <p class="text-base text-gray-400 font-mono mb-3 mt-1">2025-02-28</p>
+            <p class="text-gray-100 leading-relaxed text-lg font-medium">
+              祝贺陈一平博士被选为国家级青年学者。
+            </p>
+          </div>
+        </div>
+
+        <!-- 动态项 3 -->
+        <div class="group flex items-start gap-5 flex-row-reverse lg:flex-row text-right lg:text-left hover:-translate-x-2 transition-transform duration-300">
+          <div class="flex-shrink-0 w-20 h-20 rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-400 shadow-lg flex items-center justify-center text-white">
+            <i class="fas fa-paper-plane text-3xl group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform"></i>
+          </div>
+          <div class="flex-grow pt-1">
+            <h4 class="text-2xl font-bold text-white group-hover:text-cyan-300 transition-colors drop-shadow-md">论文录用</h4>
+            <p class="text-base text-gray-400 font-mono mb-3 mt-1">2025-02-27</p>
+            <p class="text-gray-100 leading-relaxed font-medium text-lg">
+              论文 <span class="text-cyan-300 italic font-bold text-xl">Scene4U</span> 被 CVPR 2025 录用！
+            </p>
+          </div>
+        </div>
+
+        <!-- 更多按钮 -->
+        <div class="pt-10 flex justify-end lg:justify-start pl-0 lg:pl-[6.25rem]">
+           <a href="events.html" class="btn btn-outline border-white text-white hover:bg-white hover:text-slate-900 rounded-full px-8 text-lg font-bold">
+             查看更多动态 <i class="fas fa-arrow-right ml-2"></i>
+           </a>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ========================
+       LAYER 4: 底部浮动切换器 (左下角 - 放大版)
+       ======================== -->
+  <!-- 
+       修改说明：
+       1. p-2 -> p-3 : 增加容器内边距
+       2. rounded-xl -> rounded-2xl : 圆角更大更圆润
+       3. gap-3 -> gap-4 : 增加按钮和图片组之间的距离
+  -->
+  <div class="fixed bottom-20 left-8 z-50 p-3 bg-black/40 backdrop-blur-md rounded-2xl border border-white/20 shadow-2xl flex items-center gap-4">
+    
+    <!-- 左箭头按钮 -->
+    <!-- 修改：btn-xs -> btn-sm (变大), text-lg (图标变大) -->
+    <button onclick="prevSlide()" class="btn btn-circle btn-sm btn-ghost text-white hover:bg-white/20 text-lg">
+      <i class="fa-solid fa-chevron-left"></i>
+    </button>
+    
+    <!-- 缩略图组 -->
+    <!-- 修改：gap-2 -> gap-3 -->
+    <div class="flex gap-3">
+      
+      <!-- 图片 1 -->
+      <!-- 修改：w-14 h-9 -> w-24 h-16 (宽度96px, 高度64px) -->
+      <div onclick="switchBackground(0)" class="thumb-btn active cursor-pointer w-24 h-16 rounded-lg overflow-hidden border-2 border-transparent transition-all">
+        <img src="img/team/CHINA_3DV_2024.jpg" class="w-full h-full object-cover" onerror="this.src='https://via.placeholder.com/100?text=IMG1'">
+      </div>
+      
+      <!-- 图片 2 -->
+      <!-- 修改：同上 w-24 h-16 -->
+      <div onclick="switchBackground(1)" class="thumb-btn cursor-pointer w-24 h-16 rounded-lg overflow-hidden border-2 border-transparent transition-all">
+        <img src="img/team/1.jpg" class="w-full h-full object-cover" onerror="this.src='https://via.placeholder.com/100?text=IMG2'">
+      </div>
+      
+      <!-- 图片 3 -->
+      <!-- 修改：同上 w-24 h-16 -->
+      <div onclick="switchBackground(2)" class="thumb-btn cursor-pointer w-24 h-16 rounded-lg overflow-hidden border-2 border-transparent transition-all">
+        <img src="img/team/2.jpg" class="w-full h-full object-cover" onerror="this.src='https://via.placeholder.com/100?text=IMG3'">
+      </div>
+      
+    </div>
+
+    <!-- 右箭头按钮 -->
+    <!-- 修改：btn-xs -> btn-sm, text-lg -->
+    <button onclick="nextSlide()" class="btn btn-circle btn-sm btn-ghost text-white hover:bg-white/20 text-lg">
+      <i class="fa-solid fa-chevron-right"></i>
+    </button>
+    
+  </div>
+
+ <!-- ========================
+       3. 页脚 (Fixed Footer)
+       ======================== -->
+  <footer class="footer footer-center p-6 bg-[#003366] text-white mt-auto">
+    <aside>
+      <!-- 这里的 ID 是为了防止与上面的地图冲突，通常页脚放简单的版权信息即可 -->
+      <!-- 如果需要这里也显示地图，请确保 ID 不同或复用逻辑 -->
+      <div class="mb-2 opacity-80 text-sm">中山大学 · 珠海</div>
+      <p class="font-bold text-lg">中山大学遥感科学与技术学院 3DAILab</p>
+    </aside>
+  </footer>
+
+  <!-- 脚本引用 -->
+  <script src="js/common.js"></script>
+  <script src="https://cdn.clustrmaps.com/map_v2.js"></script>
+  
+  <!-- 背景切换逻辑 -->
+  <script>
+    const slides = document.querySelectorAll('.bg-slide');
+    const thumbs = document.querySelectorAll('.thumb-btn');
+    let currentIndex = 0;
+    let autoPlayInterval;
+
+    function switchBackground(index) {
+      currentIndex = index;
+      if (currentIndex >= slides.length) currentIndex = 0;
+      if (currentIndex < 0) currentIndex = slides.length - 1;
+
+      slides.forEach((slide, i) => {
+        if (i === currentIndex) slide.classList.add('active');
+        else slide.classList.remove('active');
+      });
+
+      thumbs.forEach((btn, i) => {
+        if (i === currentIndex) btn.classList.add('active');
+        else btn.classList.remove('active');
+      });
+      resetAutoPlay();
+    }
+
+    function nextSlide() { switchBackground(currentIndex + 1); }
+    function prevSlide() { switchBackground(currentIndex - 1); }
+    function resetAutoPlay() {
+      clearInterval(autoPlayInterval);
+      autoPlayInterval = setInterval(nextSlide, 5000);
+    }
+    resetAutoPlay();
+  </script>
+</body>
+</html>

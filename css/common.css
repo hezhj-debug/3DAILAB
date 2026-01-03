@@ -1,0 +1,257 @@
+/* =============== 公共变量 =============== */
+:root{
+  --primary:#003366;
+  --secondary:#f8f9fa;
+}
+
+/* =============== 全局基础 =============== */
+body{
+  font-family:"Helvetica Neue",Helvetica,"PingFang SC","Microsoft YaHei",sans-serif;
+}
+
+/* =============== 导航栏 =============== */
+/* 1. 加高导航栏 + 加大字号 */
+.navbar-green {
+   position:fixed !important;
+  top:0 !important;
+  left:0 !important;
+  right:0 !important;
+  z-index:1030 !important;
+  min-height:80px !important;
+}
+
+.navbar-green .navbar-brand,
+.navbar-green .nav-link {
+  font-size: 1.15rem;        /* 默认 ~1rem → 1.15rem */
+  padding: 0.8rem 1rem;      /* 点击区域更大 */
+}
+
+/* 2. Logo 同步放大 */
+.navbar-brand img {
+  height: 40px;              /* 原 30px → 40px */
+  width: auto;
+}
+
+/* 3. 汉堡按钮也放大 */
+.navbar-green .navbar-toggler {
+  font-size: 1.25rem;        /* 三条线图标变大 */
+  padding: 0.5rem 0.75rem;
+}
+
+/* =============== 卡片 =============== */
+.card-hover{transition:transform .2s;}
+.card-hover:hover{transform:translateY(-4px);}
+
+/* =============== 章节标题 =============== */
+.section-title{border-left:4px solid var(--primary);padding-left:0.75rem;margin-bottom:1.5rem;}
+
+/* =============== 时间轴 =============== */
+.timeline{position:relative;padding:1rem 0;}
+.timeline::before{content:'';position:absolute;left:20px;top:0;bottom:0;width:2px;background:#e5e5e5;}
+.timeline-item{margin-bottom:1.5rem;position:relative;padding-left:50px;}
+.timeline-item::before{content:'';position:absolute;left:14px;top:5px;width:14px;height:14px;border-radius:50%;background:var(--primary);}
+
+/* =============== 页脚 =============== */
+footer{
+  background:var(--primary);
+  color:#fff;
+  padding:2rem 0;
+  text-align:center;
+}
+
+/* =============== 轮播（仅首页） =============== */
+.carousel-item{
+  height:400px;
+  background:center/cover no-repeat;
+}
+
+
+/* 整页蓝色主题 */
+.theme-green{
+  background:#3793ee;          /* 你想要的蓝色 */
+  color:#fff;                  /* 默认文字白色 */
+}
+
+
+/* 让根元素蓝到底 */
+html.theme-green,
+html.theme-green body {
+  background: #fff;
+  color: #ffffffec;
+  min-height: 100vh;   /* 撑满整屏 */
+  margin: 0;
+}
+
+/* 白卡片：真正的内容区，四周自动留蓝 */
+.card-block {
+  background: #fff;
+  color: #212529;
+  width: 60vw;                 /* 你想保持的宽度 */
+  max-width: none;
+  margin: 3rem auto;           /* 上下 3rem = 蓝边 */
+  border-radius: 0.5rem;
+  padding: 3rem 2rem;
+}
+
+/* 蓝底导航栏 */
+.navbar-green{
+  background:var(--primary);
+}
+.navbar-green .navbar-brand,
+.navbar-green .nav-link{
+  color:#fff !important;      /* 白字 */
+  font-size:25px;        /* 字号：可再改 1.05 / 1.15 */
+  font-weight:500;  
+  padding:0.5rem 2rem ;/* 左右 1rem = 按钮间隔 */
+}
+.navbar-green .nav-link:hover{
+  color:#e6e6e6 ;  
+  font-weight:600;         /* 字重：500 中等；想更粗用 600 */
+}
+.navbar-green .navbar-toggler-icon{
+  filter: invert(1);   /* 把黑线转成白线 */
+}
+/* 最简强制样式 */
+.navbar.navbar-green .navbar-brand {
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+  font-size: 1.8rem !important;
+  font-weight: 700 !important;
+}
+
+.navbar.navbar-green .navbar-brand img {
+  margin-right: 0.75rem !important;
+  height: 48px !important;
+  width: auto !important;
+}
+
+
+
+
+
+
+/* 粘底布局 */
+body.sticky-footer {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+body.sticky-footer > main {
+  flex: 1;   /* 中间区域占满剩余空间 */
+}
+
+/* 轮播整体黑色背景 */
+#carousel {
+  width: 60vw;                 /* 你想保持的宽度 */
+  height: 30vw;
+  max-width: none;
+  margin: 3rem auto;           /* 上下 3rem = 绿边 */
+  border-radius: 0.5rem;
+  padding: 3rem 2rem;
+  /*background: #808080; */  /* 背景颜色*/
+}
+
+/* 让轮播项真正占满容器高度 */
+.carousel-inner,
+.carousel-item {
+  height: 100%;        /* 必须 */
+}
+
+/* 背景图强制 100% 高，宽度自适应裁切 */
+.carousel-item {
+  background-size: auto 100% !important;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+/* 左右箭头图标颜色 */
+#carousel .carousel-control-prev-icon,
+#carousel .carousel-control-next-icon {
+  filter: grayscale(100%) brightness(60%);   /* 纯灰，亮度可调 */
+}
+
+
+/* 文字颜色保持白色（Bootstrap 默认） */
+#carousel h1,
+#carousel h2,
+#carousel p {
+  color: #0c63e4 !important;
+  text-align: center;          /* 水平居中 */
+  margin: 0 auto;              /* 清除默认 margin，辅助水平居中 */
+}
+
+/* 横线指示器 */
+.line-indicator {
+  bottom: 1.2rem;          /* 距离底部位置 */
+}
+
+/* 细长横线指示器 */
+.line-indicator button {
+  width: 18px;           /* 比原来窄 */
+  height: 2px;           /* 更薄 */
+  margin: 0 3px;
+  border: none;
+  border-radius: 0;      /* 去掉圆角 → 直线 */
+  background: rgba(255, 255, 255, .45);
+  transition: background .3s;
+}
+
+
+.line-indicator button.active {
+  width: 16px;           /* 比未激活再短一点 */
+  height: 3px;           /* 同样 2px 细线 */
+  border-radius: 0;      /* 保持直线 */
+  background: #fff;      /* 高亮白色 */
+}
+
+/*团队 教师简介你 */
+.accordion-button:not(.collapsed) {
+  background-color: #e7f1ff;
+  color: #0c63e4;
+  box-shadow: inset 0 -1px 0 rgba(0,0,0,.125);
+}
+
+.accordion-button:focus {
+  border-color: #86b7fe;
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+.accordion-body {
+  background-color: #f8f9fa;
+  border-left: 3px solid #0d6efd;
+}
+
+
+/* 成果折叠按钮 - 灰色 */
+.btn-gray {
+  background: #6c757d;
+  color: #fff;
+  border: none;
+  border-radius: 0;
+  text-align: left;
+  padding: .75rem 1rem;
+  font-size: 1rem;
+  transition: background .2s;
+}
+.btn-gray:hover {
+  background: #5a6268;
+}
+.btn-gray:focus {
+  box-shadow: none;
+}
+
+/* 卡片悬停阴影保留 */
+.card-hover {
+  transition: transform .2s, box-shadow .2s;
+}
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px #3793ee;
+}
+
+
+/*  class为mb-4的为蓝色 */
+h2.mb-4{
+  color:#003366 !important;   /* 你想用的蓝 */
+}
+
