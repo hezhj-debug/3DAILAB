@@ -236,16 +236,16 @@
 
       <!-- ==================== 教师 Faculty ==================== -->
       <!-- id="faculty" 用于锚点定位 -->
-      <section id="faculty" class="scroll-mt-32">
-          <!-- 页面标题 -->
+      <!-- <section id="faculty" class="scroll-mt-32">
+          <!== 页面标题 ==>
         <div class="mb-10 border-l-8 border-primary pl-4">
           <h1 class="text-4xl font-bold text-primary">教师</h1>
           <p class="text-gray-500 text-lg">Teacher</p>
         </div>
-        <!-- 教师卡片容器 -->
+        <!== 教师卡片容器 ==>
         <div class="flex flex-col lg:flex-row gap-8 items-stretch">
           
-          <!-- 左侧：个人信息卡片 -->
+          <!== 左侧：个人信息卡片 ==>
           <div class="card bg-white border border-gray-200 w-full lg:w-1/4 shrink-0 shadow-sm h-fit pb-6">
             <figure class="px-8 pt-8 mb-4">
               <img src="img/people/YipingChen.jpg" alt="陈一平" 
@@ -254,7 +254,7 @@
             </figure>
             
             <div class="card-body items-center text-center p-4 pt-0">
-              <!-- 字体加大 -->
+              <!== 字体加大 ==>
               <h2 class="text-3xl text-slate-800 font-bold mb-1">陈一平</h2>
               <p class="text-lg text-gray-700 font-medium">副教授 / 博士生导师</p>
               <p class="text-base text-gray-500 mb-4">激光雷达点云智能解译</p>
@@ -262,171 +262,15 @@
               <div class="flex flex-wrap justify-center gap-2 mt-auto">
                 <span class="bg-red-500 text-white text-xs px-2 py-1 rounded">团队负责人</span>
                 <span class="bg-gray-500 text-white text-xs px-2 py-1 rounded">中山大学逸仙学者</span>
+                <span class="bg-blue-500 text-white text-xs px-2 py-1 rounded">百人计划</span>
               </div>
             </div>
           </div>
 
-          <!-- <!== 右侧：详细折叠面板 ==>
-          <div class="w-full lg:w-3/4 flex flex-col">
-            <div class="join join-vertical w-full border border-gray-200 rounded bg-white h-full shadow-sm">
-              
-              <!== 1. 教育 ==>
-              <div class="collapse collapse-arrow join-item border-b border-gray-100">
-                <input type="radio" name="faculty-accordion" checked="checked" /> 
-                <div class="collapse-title text-base font-medium hover:bg-gray-50 flex items-center gap-3 py-4">
-                  <i class="fas fa-graduation-cap text-slate-500 w-6"></i> 教育
-                </div>
-                <div class="collapse-content text-base text-gray-700 pt-2"> <!== 字体加大到 text-base ==>
-                  <ul class="space-y-3 list-none pl-2">
-                    <li><i class="fas fa-university mr-2 text-gray-400"></i>国防科技大学 工程博士 (2005.09 – 2011.12)</li>
-                    <li><i class="fas fa-university mr-2 text-gray-400"></i>香港中文大学 联合博士 (2005.09 – 2011.01)</li>
-                    <li><i class="fas fa-university mr-2 text-gray-400"></i>国防科技大学 工学学士 (2001.09 – 2005.06)</li>
-                  </ul>
-                </div>
-              </div>
-
-              <!== 2. 工作经历 ==>
-              <div class="collapse collapse-arrow join-item border-b border-gray-100">
-                <input type="radio" name="faculty-accordion" /> 
-                <div class="collapse-title text-base font-medium hover:bg-gray-50 flex items-center gap-3 py-4">
-                  <i class="fas fa-briefcase text-slate-500 w-6"></i> 工作经历
-                </div>
-                <div class="collapse-content text-base text-gray-700 pt-2">
-                  <ul class="space-y-3 list-disc list-inside">
-                    <li>中山大学地理空间工程与科学学院 副教授 (2022.05 – 至今)</li>
-                    <li>厦门大学信息科学与工程学院高级工程师 (2018.04 – 2022.04)</li>
-                    <li>厦门大学信息科学与工程学院博士后 (2014.02 – 2017.02)</li>
-                    <li>国防科技大学电子学院空间所 讲师 (2012.01 – 2017.03)</li>
-                  </ul>
-                </div>
-              </div>
-
-              <!== 3. 国际交流 ==>
-              <div class="collapse collapse-arrow join-item border-b border-gray-100">
-                <input type="radio" name="faculty-accordion" /> 
-                <div class="collapse-title text-base font-medium hover:bg-gray-50 flex items-center gap-3 py-4">
-                  <i class="fas fa-globe text-slate-500 w-6"></i> 国际交流经历
-                </div>
-                <div class="collapse-content text-base text-gray-700 pt-2">
-                  <ul class="space-y-3 list-disc list-inside">
-                    <li>澳大利亚悉尼科技大学访问学者 (2019.06 – 2019.09)</li>
-                    <li>加拿大滑铁卢大学访问学者 (2015.08 – 2015.10)</li>
-                  </ul>
-                </div>
-              </div>
-
-              <!== 4. 学会服务 ==>
-              <div class="collapse collapse-arrow join-item border-b border-gray-100">
-                <input type="radio" name="faculty-accordion" /> 
-                <div class="collapse-title text-base font-medium hover:bg-gray-50 flex items-center gap-3 py-4">
-                  <i class="fas fa-users text-slate-500 w-6"></i> 科学学会服务
-                </div>
-                <div class="collapse-content text-base text-gray-700 pt-2">
-                  <ul class="space-y-3 list-disc list-inside">
-                    <li>IEEE高级会员 / 中国图像与图形学会高级会员</li>
-                    <li>ISPRS “激光雷达、激光测高与多传感器融合”工作组主席</li>
-                    <li>中国遥感应用协会妇女科技委员会副主席</li>
-                    <li>国际数字地球学会中国国家委员会激光雷达分会副秘书长</li>
-                  </ul>
-                </div>
-              </div>
-
-              <!== 5. 编辑职务 ==>
-              <div class="collapse collapse-arrow join-item border-b border-gray-100">
-                <input type="radio" name="faculty-accordion" /> 
-                <div class="collapse-title text-base font-medium hover:bg-gray-50 flex items-center gap-3 py-4">
-                  <i class="fas fa-edit text-slate-500 w-6"></i> 学术期刊编辑职务
-                </div>
-                <div class="collapse-content text-base text-gray-700 pt-2">
-                  <ul class="space-y-3 list-disc list-inside">
-                    <li>IEEE Geoscience and Remote Sensing Magazine 副主编 (JCR Q1, IF=14.6)</li>
-                    <li>IEEE Transactions on Geoscience and Remote Sensing 副主编 (JCR Q1, IF=8.2)</li>
-                    <li>International Journal of Applied Earth Observation and Geoinformation 副主编 (JCR Q1, IF=7.6)</li>
-                    <li>Geo-spatial Information Science (JCR Q1) 编辑委员会成员</li>
-                    <li>Photogrammetric Record (JCR Q3) 编辑委员会成员</li>
-                    <li>Journal of Innovation (IF=32) 初级编辑</li>
-                  </ul>
-                </div>
-              </div>
-
-              <!== 6. 荣誉 ==>
-              <div class="collapse collapse-arrow join-item border-b border-gray-100">
-                <input type="radio" name="faculty-accordion" /> 
-                <div class="collapse-title text-base font-medium hover:bg-gray-50 flex items-center gap-3 py-4">
-                  <i class="fas fa-trophy text-slate-500 w-6"></i> 荣誉
-                </div>
-                <div class="collapse-content text-base text-gray-700 pt-2">
-                  <ul class="space-y-3 list-disc list-inside">
-                    <li>2023年《国际应用地球观测与地理信息杂志》最佳论文奖</li>
-                    <li>2023年《摄影测量记录》最佳编辑委员会成员</li>
-                    <li>中国遥感应用协会杰出青年女科学家奖（特别奖），2023年</li>
-                    <li>2023年首届全球可持续发展国际空间信息高端论坛最佳论文奖</li>
-                    <li>中国测绘与制图学会科学技术奖二等奖（排名第一），表彰2022年“高速公路智能化关键技术与工程应用”</li>
-                    <li>IEEE 应用地球观测与遥感精选期刊（JSTARS）2019年最佳评审人奖杰出评审人奖</li>
-                    <li>2019年福建省自然科学奖三等奖（排名第二），三维点云智能物体探测理论与方法</li>
-                  </ul>
-                </div>
-              </div>
-
-              <!== 7. 研究项目 ==>
-              <div class="collapse collapse-arrow join-item border-b border-gray-100">
-                <input type="radio" name="faculty-accordion" /> 
-                <div class="collapse-title text-base font-medium hover:bg-gray-50 flex items-center gap-3 py-4">
-                  <i class="fas fa-flask text-slate-500 w-6"></i> 研究项目
-                </div>
-                <div class="collapse-content text-base text-gray-700 pt-2">
-                  <ul class="space-y-3 list-disc list-inside">
-                    <li>2024-01-2027-12, 国家自然科学基金面上项目, 车载三维点云道路要素单体化分割理论与方法研究, 主持</li>
-                    <li>2024-01-2026-12, 广东省自然科学基金面上项目, 湾区城市数字孪生高精度三维点云部件级分割与交互式分析, 主持</li>
-                    <li>2022-12-2023-12, 国家电网, 输电线路三维激光点云数据采集服务, 主持</li>
-                    <li>2022-08-2023-06, 国家电网, 激光点云数据规整技术支持服务, 主持</li>
-                    <li>2022-08-2024-09, 科技委项目, 低空无人机载激光雷达点云数据获取与语义分割技术, 主持</li>
-                    <li>2022-01-2022-12, 广东省“海外名师”项目, 大规模三维点云地物要素语义分割研究, 主持</li>
-                    <li>2021-04-2021-05, 福州大学, 彩色点云数据校正测试服务, 主持</li>
-                    <li>2021-03-2022-03， ISPRS国际摄影测量和遥感学会科学计划，城市地下空间三维语义映射， 联合主持</li>
-                    <li>2020-11-2021-04, 福州大学, 点云数据采集服务, 主持</li>
-                    <li>2020-06-2021-12, 中山大学, 变化检测融合决策技术研究, 主持</li>
-                    <li>2018-01-2022-12, 国家自然科学基金面上项目, 基于三维点云的高清地图快速语义标注理论与方法研究, 主持</li>
-                    <li>2016-05-2018-05, 科技委项目, 激光雷达目标特性建模, 主持</li>
-                    <li>2016-01-2019-12, 国家自然科学基金青年基金项目, 多回波地面激光扫描点云的叶簇遮挡目标特性建模, 主持</li>
-                  </ul>
-                </div>
-              </div>
-
-              <!== 8. 教学 ==>
-              <div class="collapse collapse-arrow join-item">
-                <input type="radio" name="faculty-accordion" /> 
-                <div class="collapse-title text-base font-medium hover:bg-gray-50 flex items-center gap-3 py-4">
-                  <i class="fas fa-chalkboard-teacher text-slate-500 w-6"></i> 教学
-                </div>
-                <div class="collapse-content text-base text-gray-700 pt-2">
-                  <p class="font-bold mb-1">课程：</p>
-                  <ul class="space-y-1 list-disc list-inside mb-3">
-                    <li>计算机视觉与模式识别（中文，中山大学大三本科生）</li>
-                    <li>人工智能技术（中文，澳门科技大学一年级研究生）</li>
-                    <li>科学写作（中文，中山大学博士生）</li>
-                    <li>激光雷达遥感（中文，2022年）</li>
-                  </ul>
-                  <p class="font-bold mb-1">讲座：</p>
-                  <ul class="space-y-1 list-disc list-inside mb-3">
-                    <li>2022年空天地海智能感知技术暑期学校, 基于深度学习的三维点云植被提取研究</li>
-                  </ul>
-                  <p class="font-bold mb-1">指导：</p>
-                  <ul class="space-y-1 list-disc list-inside">
-                    <li>指导2023级本科生校级大学生创新训练项目, 多源建筑物数据的多尺度表达</li>
-                    <li>指导2022级本科生校级大学生创新训练项目， 基于LiDAR三维点云数据的树种分类和碳储量估算</li>
-                    <li>指导2021级本科生校级大学生创新训练项目, 基于点云的树木碳储量计算</li>
-                    <li>面向新工科的人工智能与测绘课程融合教改思考与实践, 《地理空间信息》</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div> -->
-
-          <!-- 右侧：Tab 导航 + 内容展示 -->
+          <!== 右侧：Tab 导航 + 内容展示 ==>
           <div class="w-full lg:w-3/4 flex flex-col"> 
-            <!-- 1. 顶部 Tab 导航栏 -->
-            <!-- flex-wrap: 允许在小屏幕自动换行，防止挤压 -->
+            <!== 1. 顶部 Tab 导航栏 ==>
+            <!== flex-wrap: 允许在小屏幕自动换行，防止挤压 ==>
             <div class="tabs tabs-boxed bg-white border border-gray-200 p-2 gap-2 flex-wrap justify-center lg:justify-start shadow-sm mb-6">
               <a class="tab tab-active h-10 px-6 font-bold" onclick="showTab(event, 'edu')"><i class="fas fa-graduation-cap mr-2"></i> 教育</a>
               <a class="tab h-10 px-6 font-bold" onclick="showTab(event, 'work')"><i class="fas fa-briefcase mr-2"></i> 工作</a>
@@ -438,31 +282,31 @@
               <a class="tab h-10 px-6 font-bold" onclick="showTab(event, 'teach')"><i class="fas fa-chalkboard-teacher mr-2"></i> 教学</a>
             </div>
 
-            <!-- 2. 内容展示区域 -->
+            <!== 2. 内容展示区域 ==>
             <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm min-h-[300px] relative">
               
-              <!-- 教育 (默认显示) -->
+              <!== 教育 (默认显示) ==>
               <div id="edu" class="tab-content block animate-fade-in">
                 <h3 class="text-xl font-bold text-primary mb-4 flex items-center border-b pb-2"><i class="fas fa-graduation-cap mr-3"></i> 教育经历</h3>
                 <ul class="space-y-3 list-disc list-inside text-gray-700">
-                  <li><span class="font-bold">国防科技大学</span> 工程博士(2005.09 – 2011.12)</li>
+                  <li><span class="font-bold">国防科技大学</span> 工学博士(2005.09 – 2011.12)</li>
                   <li><span class="font-bold">香港中文大学</span> 联合博士(2005.09 – 2011.01)</li>
                   <li><span class="font-bold">国防科技大学</span> 工学学士(2001.09 – 2005.06)</li>
                 </ul>
               </div>
 
-              <!-- 工作经历 -->
+              <!== 工作经历 ==>
               <div id="work" class="tab-content hidden animate-fade-in">
                 <h3 class="text-xl font-bold text-primary mb-4 flex items-center border-b pb-2"><i class="fas fa-briefcase mr-3"></i> 工作经历</h3>
                 <ul class="space-y-3 list-disc list-inside text-gray-700">
-                  <li><span class="font-bold">中山大学</span> 地理空间工程与科学学院 副教授 (2022.05 – 至今)</li>
-                  <li><span class="font-bold">厦门大学</span> 信息科学与工程学院高级工程师 (2018.04 – 2022.04)</li>
-                  <li><span class="font-bold">厦门大学</span> 信息科学与工程学院博士后 (2014.02 – 2017.02)</li>
-                  <li><span class="font-bold">国防科技大学</span> 电子学院空间所 讲师 (2012.01 – 2017.03)</li>
+                  <li><span class="font-bold">中山大学</span> 遥感科学与技术学院 副教授 (2022.05 – 至今)</li>
+                  <li><span class="font-bold">厦门大学</span> 信息学院高级工程师 (2018.04 – 2022.04)</li>
+                  <li><span class="font-bold">厦门大学</span> 信息学院博士后 (2014.02 – 2017.02)</li>
+                  <li><span class="font-bold">国防科技大学</span> 电子科学学院 讲师 (2012.01 – 2017.03)</li>
                 </ul>
               </div>
 
-              <!-- 国际交流 -->
+              <!== 国际交流 ==>
               <div id="global" class="tab-content hidden animate-fade-in">
                 <h3 class="text-xl font-bold text-primary mb-4 flex items-center border-b pb-2"><i class="fas fa-globe mr-3"></i> 国际交流经历</h3>
                 <ul class="space-y-3 list-disc list-inside text-gray-700">
@@ -471,7 +315,7 @@
                 </ul>
               </div>
 
-              <!-- 学会服务 -->
+              <!== 学会服务 ==>
               <div id="service" class="tab-content hidden animate-fade-in">
                 <h3 class="text-xl font-bold text-primary mb-4 flex items-center border-b pb-2"><i class="fas fa-users mr-3"></i> 科学学会服务</h3>
                 <ul class="space-y-3 list-disc list-inside text-gray-700">
@@ -482,7 +326,7 @@
                 </ul>
               </div>
 
-              <!-- 编辑职务 -->
+              <!== 编辑职务 ==>
               <div id="editor" class="tab-content hidden animate-fade-in">
                 <h3 class="text-xl font-bold text-primary mb-4 flex items-center border-b pb-2"><i class="fas fa-edit mr-3"></i> 学术期刊编辑职务</h3>
                 <ul class="space-y-3 list-disc list-inside text-gray-700">
@@ -495,7 +339,7 @@
                 </ul>
               </div>
 
-              <!-- 荣誉 -->
+              <!== 荣誉 ==>
               <div id="honor" class="tab-content hidden animate-fade-in">
                 <h3 class="text-xl font-bold text-primary mb-4 flex items-center border-b pb-2"><i class="fas fa-trophy mr-3"></i> 荣誉奖项</h3>
                 <ul class="space-y-3 list-disc list-inside text-gray-700">
@@ -509,7 +353,7 @@
                 </ul>
               </div>
 
-              <!-- 研究项目 -->
+              <!== 研究项目 ==>
               <div id="project" class="tab-content hidden animate-fade-in">
                 <h3 class="text-xl font-bold text-primary mb-4 flex items-center border-b pb-2"><i class="fas fa-flask mr-3"></i> 研究项目</h3>
                 <div class="h-96 overflow-y-auto pr-2 custom-scroll">
@@ -521,7 +365,305 @@
                     <li>2022-08-2024-09, <span class="font-bold">科技委项目</span>, 低空无人机载激光雷达点云数据获取与语义分割技术, 主持</li>
                     <li>2022-01-2022-12, <span class="font-bold">广东省“海外名师”项目</span>, 大规模三维点云地物要素语义分割研究, 主持</li>
                     <li>2021-04-2021-05, 福州大学, 彩色点云数据校正测试服务, 主持</li>
-                    <li>2021-03-2022-03， ISPRS国际摄影测量和遥感学会科学计划，城市地下空间三维语义映射， 联合主持</li>
+                    <li>2021-03-2022-03，ISPRS国际摄影测量和遥感学会科学计划，城市地下空间三维语义映射， 联合主持</li>
+                    <li>2020-11-2021-04, 福州大学, 点云数据采集服务, 主持</li>
+                    <li>2020-06-2021-12, 中山大学, 变化检测融合决策技术研究, 主持</li>
+                    <li>2018-01-2022-12, <span class="font-bold">国家自然科学基金面上项目</span>, 基于三维点云的高清地图快速语义标注理论与方法研究, 主持</li>
+                    <li>2016-05-2018-05, <span class="font-bold">科技委项目</span>, 激光雷达目标特性建模, 主持</li>
+                    <li>2016-01-2019-12, <span class="font-bold">国家自然科学基金青年基金项目</span>, 多回波地面激光扫描点云的叶簇遮挡目标特性建模, 主持</li>
+                  </ul>
+                </div>
+              </div>
+
+              <!== 教学 ==>
+              <div id="teach" class="tab-content hidden animate-fade-in">
+                <h3 class="text-xl font-bold text-primary mb-4 flex items-center border-b pb-2"><i class="fas fa-chalkboard-teacher mr-3"></i> 教学与指导</h3>
+                <div class="space-y-4 text-gray-700">
+
+                  <div>
+                    <h4 class="font-bold text-black mb-2">课程</h4>
+                    <ul class="list-disc list-inside pl-2 space-y-1">
+                      <li>计算机视觉与模式识别（中文，中山大学大三本科生）</li>
+                      <li>人工智能技术（中文，澳门科技大学一年级研究生）</li>
+                      <li>科学写作（中文，中山大学博士生）</li>
+                      <li>激光雷达遥感（中文，2022年）</li>
+                    </ul>
+                  </div>
+
+                  <div>
+                  <h4 class="font-bold text-black mb-2">讲座</h4>
+                    <ul class="list-disc list-inside pl-2 space-y-1">
+                      <li>2022年空天地海智能感知技术暑期学校, 基于深度学习的三维点云植被提取研究</li>
+                    </ul>
+                  </div>
+
+                  <div>
+                    <h4 class="font-bold text-black mb-2">指导</h4>
+                    <ul class="list-disc list-inside pl-2 space-y-1">
+                      <li>指导2023级本科生校级大学生创新训练项目, 多源建筑物数据的多尺度表达</li>
+                      <li>指导2022级本科生校级大学生创新训练项目， 基于LiDAR三维点云数据的树种分类和碳储量估算</li>
+                      <li>指导2021级本科生校级大学生创新训练项目, 基于点云的树木碳储量计算</li>
+                    </ul>
+                  </div>
+
+                </div>
+              </div>
+          </div>
+
+        </div>
+      </section> -->
+
+
+      <!-- ==================== 教师 Faculty ==================== -->
+      <section id="faculty" class="scroll-mt-32">
+        <!-- 页面标题 -->
+        <div class="mb-10 border-l-8 border-primary pl-4">
+          <h1 class="text-4xl font-bold text-primary">教师</h1>
+          <p class="text-gray-500 text-lg">Teacher</p>
+        </div>
+
+        <!-- 教师卡片容器 -->
+        <!-- 修改点1: 添加 lg:h-[650px] 给父容器设定高度，items-stretch 保证左右等高 -->
+        <div class="flex flex-col lg:flex-row gap-8 items-stretch lg:h-[500px]">
+          
+          <!-- 左侧：个人信息卡片 -->
+          <!-- 修改点2: 添加 h-full 让卡片填满父容器高度，移除 h-fit -->
+          <div class="card bg-white border border-gray-200 w-full lg:w-1/4 shrink-0 shadow-sm h-full pb-6">
+            <figure class="px-8 pt-8 mb-4">
+              <img src="img/people/YipingChen.jpg" alt="陈一平" 
+                  class="object-cover aspect-[3/4] w-full rounded-md shadow-sm border border-gray-100 max-w-[220px]" 
+                  onerror="this.src='https://via.placeholder.com/300x400?text=Yiping+Chen'"/>
+            </figure>
+            
+            <div class="card-body items-center text-center p-4 pt-0">
+              <h2 class="text-3xl text-slate-800 font-bold mb-1">陈一平</h2>
+              <p class="text-lg text-gray-700 font-medium">副教授 / 博士生导师</p>
+              <p class="text-base text-gray-500 mb-4">激光雷达点云智能解译</p>
+              
+              <div class="flex flex-wrap justify-center gap-2 mt-auto">
+                <span class="bg-red-500 text-white text-xs px-2 py-1 rounded">团队负责人</span>
+                <span class="bg-gray-500 text-white text-xs px-2 py-1 rounded">中山大学逸仙学者</span>
+                <span class="bg-blue-500 text-white text-xs px-2 py-1 rounded">百人计划</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 右侧：Tab 导航 + 内容展示 -->
+          <!-- 修改点3: 添加 h-full 和 flex-col 以便进行内部布局计算 -->
+          <div class="w-full lg:w-3/4 flex flex-col h-full"> 
+            
+            <!-- 1. 顶部 Tab 导航栏 (高度固定，不伸缩) -->
+            <div class="tabs tabs-boxed bg-white border border-gray-200 p-2 gap-2 flex-wrap justify-center lg:justify-start shadow-sm mb-4 shrink-0">
+              <a class="tab tab-active h-10 px-6 font-bold" onclick="showTab(event, 'edu')"><i class="fas fa-graduation-cap mr-2"></i> 教育</a>
+              <a class="tab h-10 px-6 font-bold" onclick="showTab(event, 'work')"><i class="fas fa-briefcase mr-2"></i> 工作</a>
+              <a class="tab h-10 px-6 font-bold" onclick="showTab(event, 'global')"><i class="fas fa-globe mr-2"></i> 交流</a>
+              <a class="tab h-10 px-6 font-bold" onclick="showTab(event, 'service')"><i class="fas fa-users mr-2"></i> 社会工作</a>
+              <a class="tab h-10 px-6 font-bold" onclick="showTab(event, 'editor')"><i class="fas fa-edit mr-2"></i> 专利</a>
+              <a class="tab h-10 px-6 font-bold" onclick="showTab(event, 'honor')"><i class="fas fa-trophy mr-2"></i> 荣誉</a>
+              <a class="tab h-10 px-6 font-bold" onclick="showTab(event, 'project')"><i class="fas fa-flask mr-2"></i> 项目</a>
+              <a class="tab h-10 px-6 font-bold" onclick="showTab(event, 'teach')"><i class="fas fa-chalkboard-teacher mr-2"></i> 教学</a>
+            </div>
+
+            <!-- 2. 内容展示区域 -->
+            <!-- 修改点4: 
+                flex-1: 占据剩余所有高度
+                overflow-y-auto: 内容溢出时滚动
+                min-h-0: 修复 Flex 嵌套滚动失效的 Bug 
+                h-auto: 移除之前的 min-h-[300px] 限制
+            -->
+            <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm flex-1 overflow-y-auto min-h-0 custom-scroll">
+              
+              <!-- 教育 (默认显示) -->
+              <div id="edu" class="tab-content block animate-fade-in">
+                <h3 class="text-xl font-bold text-primary mb-4 flex items-center border-b pb-2"><i class="fas fa-graduation-cap mr-3"></i> 教育经历</h3>
+                <ul class="space-y-3 list-disc list-inside text-gray-700">
+                  <li><span class="font-bold">国防科技大学</span> 工学博士(2005.09 – 2011.12)</li>
+                  <li><span class="font-bold">香港中文大学</span> 联合博士(2005.09 – 2011.01)</li>
+                  <li><span class="font-bold">国防科技大学</span> 工学学士(2001.09 – 2005.06)</li>
+                </ul>
+              </div>
+
+              <!-- 工作经历 -->
+              <div id="work" class="tab-content hidden animate-fade-in">
+                <h3 class="text-xl font-bold text-primary mb-4 flex items-center border-b pb-2"><i class="fas fa-briefcase mr-3"></i> 工作经历</h3>
+                <ul class="space-y-3 list-disc list-inside text-gray-700">
+                  <li><span class="font-bold">中山大学</span> 遥感科学与技术学院 副教授 (2022.05 – 至今)</li>
+                  <li><span class="font-bold">厦门大学</span> 信息学院高级工程师 (2018.04 – 2022.04)</li>
+                  <li><span class="font-bold">厦门大学</span> 信息学院博士后 (2014.02 – 2017.02)</li>
+                  <li><span class="font-bold">国防科技大学</span> 电子科学学院 讲师 (2012.01 – 2017.03)</li>
+                </ul>
+              </div>
+
+              <!-- 国际交流 -->
+              <div id="global" class="tab-content hidden animate-fade-in">
+                <h3 class="text-xl font-bold text-primary mb-4 flex items-center border-b pb-2"><i class="fas fa-globe mr-3"></i> 国际交流经历</h3>
+                <ul class="space-y-3 list-disc list-inside text-gray-700">
+                  <li><span class="font-bold">澳大利亚悉尼科技大学</span> 访问学者 (2019.06 – 2019.09)</li>
+                  <li><span class="font-bold">加拿大滑铁卢大学</span> 访问学者 (2015.08 – 2015.10)</li>
+                </ul>
+              </div>
+
+              <!-- 服务 -->
+              <div id="service" class="tab-content hidden animate-fade-in">
+                <h3 class="text-xl font-bold text-primary mb-4 flex items-center border-b pb-2"><i class="fas fa-users mr-3"></i> 科学学会服务</h3>
+                <ul class="space-y-3 list-disc list-inside text-gray-700">
+                  <div>
+                    <h4 class="font-bold text-black mb-2">科学学会服务</h4>
+                    <ul class="list-disc list-inside pl-2 space-y-1">
+                      <li>国际摄影测量与遥感学会 “激光雷达、激光测高与多传感器融合” <span class="font-bold">工作组主席</span> (2023-2026)</li>
+                      <li>国际数字地球学会中国国家委员会激光雷达专业委员会委员、<span class="font-bold">副秘书长</span> (2022-2026)</li>
+                      <li>中国遥感应用协会女科技工作者工作委员会<span class="font-bold">副主任委员</span> (2023-2027)</li>
+                      <li>联合参谋部视觉导航与无人车<span class="font-bold">专家组成员</span> (2022-2026)</li>
+                      <li>广东省测绘学会<span class="font-bold">监事</span></li>
+                      <li>广东省科协  <span class="font-bold">“十大”代表</span>，2023</li>
+                    </ul>
+                  </div>
+
+                  <div>
+                  <h4 class="font-bold text-black mb-2">学术期刊编辑</h4>
+                    <ul class="list-disc list-inside pl-2 space-y-1">
+                      <li>IEEE Geoscience and Remote Sensing Magazine (IF: 16.4) <span class="font-bold">副主编</span>, (2023.11-至今)</li>
+                      <li>IEEE Transactions on Geoscience and Remote Sensing (IF: 8.6) <span class="font-bold">副主编</span>, (2023.03-至今)</li>
+                      <li>International Journal of Applied Earth Observation and Geoinformation (IF:8.6) <span class="font-bold">副主编</span>, (2024.09-至今)</li>
+                      <li>The Photogrammetric Record (IF:3.6) <span class="font-bold">编委</span></li>
+                      <li>The Innovation (IF: 33.1) <span class="font-bold">编委</span> (2022.10-至今)</li>
+                      <li>《测绘学报》<span class="font-bold">青年编委</span></li>
+                    </ul>
+                  </div>
+
+                  <div>
+                    <h4 class="font-bold text-black mb-2">学术会议主席</h4>
+                    <ul class="list-disc list-inside pl-2 space-y-1">
+                      <li>地理信息灾害管理国际会议 (Gi4DM) <span class="font-bold">共同主席</span>, 2024</li>
+                      <li>ISPRS TCI Mid-term Symposium <span class="font-bold">领域主席</span>, 2024</li>
+                      <li>ISPRS GSW <span class="font-bold">领域主席</span>, 2023</li>
+                      <li>The 8th International Conference on: Earth Observation for Environmental Changes, <span class="font-bold">程序委员会共同主席</span>, 2023</li>
+                      <li>IEEE IGARSS <span class="font-bold">领域主席</span>, 2023</li>
+                      <li>首届粤港澳大湾区测绘遥感大会, <span class="font-bold">组织委员会委员</span>, 2023</li>
+                      <li>IEEE IGARSS <span class="font-bold">领域主席</span>, 2021-2025</li>
+                      <li>Geographic Information Sciences (CPGIS) <span class="font-bold">领域主席</span> 2021</li>
+                      <li>第七届全国激光雷达大会<span class="font-bold">领域主席</span> 2021</li>
+                    </ul>
+                  </div>
+
+                  <div>
+                    <h4 class="font-bold text-black mb-2">参与标准</h4>
+                    <ul class="list-disc list-inside pl-2 space-y-1">
+                      <li>IEEE P1936.20, 无人驾驶飞行器光探测与测距(LiDAR)遥感操作规范, <span class="font-bold">国际标准</span>, 2025.11</li>
+                      <li>IEEE P1937.6, 基于机载激光雷达(LiDAR)的架空线路电力故障识别标准, <span class="font-bold">国际标准</span>, 2025.11</li>
+                      <li>数字孪生模型评估规范, <span class="font-bold">团体标准</span>, 广电计量检测集团股份有限公司, 2023.11</li>
+                      <li>自动驾驶高精地图数据交互接口, <span class="font-bold">团体标准</span>, 同济大学, 2024.06</li>
+                    </ul>
+                  </div>
+
+                  <div>
+                    <h4 class="font-bold text-black mb-2">学术活动</h4>
+                    <ul class="list-disc list-inside pl-2 space-y-1">
+                      <li>中国科协立项支持、中国遥感应用协会主办的“低空遥感研讨活动” <span class="font-bold">主席</span>, 2025</li>
+                      <li>第十三届高校GIS论坛，“空间智能—AI 与 GIS 融合驱动的产业新纪元” <span class="font-bold">学术沙龙嘉宾</span>, 2025</li>
+                    </ul>
+                  </div>
+                </ul>
+              </div>
+
+              <!-- 专利 -->
+              <div id="editor" class="tab-content hidden animate-fade-in">
+                <h3 class="text-xl font-bold text-primary mb-4 flex items-center border-b pb-2"><i class="fas fa-edit mr-3"></i> 国家发明专利（授权）</h3>
+                <ul class="space-y-3 list-disc list-inside text-gray-700">
+                  <li>王化娟，陈一平，丁建勋，韩汀等, <span class="font-bold">一种激光点云融合联合测绘构建建筑物栋层户级的实体方法</span>, 授权时间: 2025.02.13</li>
+                  <li>陈一平, 谢相依, 李军等, <span class="font-bold">基于堆叠深度残差网络的遥感图像语义分割方法及系统</span>, 专利授权号: ZL202311609856.4, 受理时间: 2024.10.17</li>
+                  <li>陈一平, 高剑岚, 李军等, <span class="font-bold">道路点云中护栏的提取方法及装置</span>, 专利授权号: ZL202010615878.1, 授权日期: 2024.09.20</li>
+                  <li>陈一平, 张吴明, 张帅等, <span class="font-bold">一种树木点云木质成分与叶片成分的分离方法及系统</span>, 专利授权号: 2023103965180, 受理时间: 2023.04.14</li>
+                  <li>陈一平, 陈钧, 王程等, <span class="font-bold">一种基于激光点云的城市道路场景语义分割方法</span>, 专利授权号: CN 116071661 B, 授权时间: 2023.06.23</li>
+                  <li>陈一平, 李根, 王程等, <span class="font-bold">基于深度学习的激光扫描 SLAM 室内三维点云质量评价方法</span>, 专利授权号: CN201910051741.5, 授权时间: 2021.04.30</li>
+                  <li>陈一平, 刘蔚锋, 李军等, <span class="font-bold">一种用于 TLS 多回波点云植被遮挡目标的探测和分析方法</span>, 专利授权号: ZL201811494004.4, 授权时间: 2020.11.10</li>
+                  <li>陈一平, 吴荣仁, 贾宏等, <span class="font-bold">基于体素生长和地面激光点云的树木胸径自动计算方法</span>, 发明专利号: ZL201810638020.X, 授权时间: 2020.08.11</li>
+                  <li>陈一平, 王程, 李军等, <span class="font-bold">一种植被提取方法及系统</span>, 发明专利号: ZL2016 10028156.X, 授权时间: 2018.10.19</li>
+                  <li>杜志刚, 赵建, 李志平, 张宗锋, 唐亚蒙, 冉佳欢, 郝全超, 陈一平等, <span class="font-bold">二等水准测量装置</span>, 专利号授权号: ZL 202430737610.4, 授权时间: 2025.07.04</li>
+                  <li>马凌飞, 李军, 陈一平等, <span class="font-bold">一种基于车载激光点云和卫星影像的道路边界线复原方法</span>, 专利授权号: CN112561808B, 授权时间: 2023.07.18</li>
+                  <li>李军, 丰慧芳, 陈一平等, <span class="font-bold">一种基于车载激光点云的路面裂缝检测方法</span>, 专利授权号: CN 112785548 B, 授权时间: 2023.07.18</li>
+                  <li>李军, 刘小雪, 陈一平等, <span class="font-bold">一种基于高空间分辨率光学遥感图像的建筑物实例自动提取方法</span>, 专利授权号: CN 112883887 B, 授权时间: 2023.07.18</li>
+                  <li>王程, 陈钧, 陈一平, <span class="font-bold">基于图卷积和半监督学习网络的城市场景语义分割方法</span>, 专利授权号: CN 116310350 B, 授权时间: 2023.08.18</li>
+                  <li>王程, 邹辛怀, 陈一平等, <span class="font-bold">基于深度学习的激光扫描三维点云树木自动分类方法</span>, 专利授权号: ZL201610813682.7, 授权时间: 2020.04.17</li>
+                  <li>李军, 洪志友, 罗志鹏, 邓振森, 陈一平等, <span class="font-bold">一种基于探地雷达回波数据的自动汇聚成像方法</span>, 专利授权号: ZL201810005327.6, 授权时间: 2020.07.07</li>
+                  <li>李军, 陈心渠, 陈一平等, <span class="font-bold">基于多回波机载激光扫描数据的城市树木碳含量估计方法</span>, 专利授权号: ZL201711248101.0, 授权时间: 2020.06.23</li>
+                  <li>李军, 项青, 陈一平等, <span class="font-bold">一种基于三维点云数据的电缆自动提取重构方法</span>, 专利授权号: ZL201710884106.6, 授权时间: 2020.07.24</li>
+                  <li>李军, 吴凡, 温程璐, 陈一平等, <span class="font-bold">基于车载激光扫描点云的路灯杆自动提取技术</span>, 专利授权号: ZL201610354980.4, 授权时间: 2020.05.22</li>
+                  <li>李军, 张宗良, 陈一平等, <span class="font-bold">基于车载移动激光扫描点云的三维公路曲线重建方法</span>, 专利号: ZL201910674347.7, 受理时间: 2022.01.18</li>
+                  <li>李渊, 陈一平, 李国艳等, <span class="font-bold">一种利用生成对抗网络进行稠密点云补全的算法</span>, 专利号: ZL202110768864.8, 授权时间: 2022.06.21</li>
+                  <li>李军, 谈柿楷, 陈一平等, <span class="font-bold">一种基于哨兵一号合成孔径雷达图像的海冰测绘方法</span>, 专利号: ZL201911274515.X, 授权时间: 2023.04.07</li>
+                </ul>
+                </ul>
+              </div>
+
+              <!-- 荣誉 -->
+              <div id="honor" class="tab-content hidden animate-fade-in">
+                <h3 class="text-xl font-bold text-primary mb-4 flex items-center border-b pb-2"><i class="fas fa-trophy mr-3"></i> 荣誉奖项</h3>
+                <ul class="space-y-3 list-disc list-inside text-gray-700">
+                 <div>
+                    <h4 class="font-bold text-black mb-2">个人学术奖</h4>
+                    <ul class="list-disc list-inside pl-2 space-y-1">
+                      <li>中国遥感应用协会青年女科学家奖<span class="font-bold">特等奖</span>，2023</li>
+                      <li>GEO-DIGITALIZATION FOR SUSTAINABLE DEVELOPMENT GOALS AND 3RD YOUTH INNOVATION FORUM ON DIGITAL EARTH，<span class="font-bold">最佳报告奖</span> ，2025</li>
+                      <li>ISPRS-ISDE<span class="font-bold">最佳报告奖</span>，2025</li>
+                      <li>第八届全国激光雷达大会<span class="font-bold">优秀论文奖</span>，2025</li>
+                      <li>《测绘学报》2024 年度<span class="font-bold">优秀审稿专家</span>，2024</li>
+                      <li>Wily 论文高被引奖，2024</li>
+                      <li>第二届空间信息全球可持续发展国际高端论坛<span class="font-bold">最佳论文奖</span>，2024</li>
+                      <li>第七届全国激光雷达大会<span class="font-bold">优秀论文奖</span>，2024</li>
+                      <li>The Photogrammetric Record》期刊<span class="font-bold">最佳国际编委</span>，2023</li>
+                      <li>《International Journal of Applied Earth Observation and Geoinformation》期刊<span class="font-bold">最佳论文奖</span>，2023</li>
+                      <li>首届空间信息全球可持续发展国际高端论坛<span class="font-bold">最佳论文奖</span>，2023</li>
+                      <li>国际数字地球学会中国国家委员会<span class="font-bold">优秀论文奖</span>，2023</li>
+                      <li>IEEE JSTARS<span class="font-bold">杰出审稿人奖</span>，2019</li>
+                    </ul>
+                  </div>
+
+                  <div>
+                  <h4 class="font-bold text-black mb-2">个人教学奖</h4>
+                    <ul class="list-disc list-inside pl-2 space-y-1">
+                      <li>全国高校 GIS 论坛“优秀教学成果奖”，2024.（<span class="font-bold">排 1</span>）</li>
+                      <li>第八届全国激光雷达数据处理比赛<span class="font-bold">特等奖指导老师</span>，2025</li>
+                      <li>第七届全国激光雷达讲课比赛<span class="font-bold">特等奖</span>，2024</li>
+                      <li>第七届全国激光雷达<span class="font-bold">优秀博士生导师奖</span>，2024</li>
+                      <li>第七届全国激光雷达数据处理比赛<span class="font-bold">特等奖指导老师</span>，2024</li>
+                      <li>首届地球系统科学专业赛共享杯<span class="font-bold">优秀奖</span>，2024</li>
+                       
+                    </ul>
+                  </div>
+
+                  <div>
+                    <h4 class="font-bold text-black mb-2">产业创新奖</h4>
+                    <ul class="list-disc list-inside pl-2 space-y-1">
+                      <li>公路交通数智化关键技术与工程化应用，<span class="font-bold">中国测绘学会科学技术二等奖</span>，2022.（排 1）</li>
+                      <li>复杂环境下跨江越海特长隧道精密测量关键技术研究及应用，<span class="font-bold">中国地理信息产业协会地理信息科技进步奖二等奖</span>，2024.（排 2</li>
+                      <li>三维点云智能化目标检测的理论与方法，<span class="font-bold">福建省自然科学奖三等奖</span>，2019.（排 2）</li>
+                      <li>道路交通时空信息融合与建模关键技术及应用，<span class="font-bold">中国地理信息产业协会地理信息科技进步奖一等奖</span>，2025.（排 3）</li>
+                      <li>复杂环境下跨江越海特长隧道精密测量关键技术研究及应用，<span class="font-bold">中国地理信息产业协会地理信息科技进步奖二等奖</span>，2024.（排 7）</li>
+                      <li>光量子矢量遥感数理基础与低空观测关键技术突破，<span class="font-bold">北京市技术发明一等奖</span>，2024.（排 15）</li>
+                      <li>2023 年度中国遥感领域十大事件，<span class="font-bold">我国卫星遥感在极地科考中取得重大成果</span>，2024.（排 9）</li>
+                    </ul>
+                  </div>
+                </ul>
+              </div>
+
+              <!-- 研究项目 -->
+              <div id="project" class="tab-content hidden animate-fade-in">
+                <h3 class="text-xl font-bold text-primary mb-4 flex items-center border-b pb-2"><i class="fas fa-flask mr-3"></i> 研究项目</h3>
+                <!-- 修改点5: 移除了这里的 h-96 和 overflow-y-auto，让外层统一滚动 -->
+                <div class="pr-2">
+                  <ul class="list-disc list-inside pl-2 space-y-1">
+                    <li>2026-01-2028-12, <span class="font-bold">江西省重点研发计划项目</span>, 基于CIM数字底座的老旧社区低碳更新潜力评估与空间优化策略研究, 主持</li>
+                    <li>2026-01-2027-12, <span class="font-bold">武汉大学</span>, 基础模型驱动的点云城市空间建筑物自动化重建研究, 主持</li>
+                    <li>2025-01-2025-12, <span class="font-bold">中山大学</span>, 数字化XX环境, 主持</li>
+                    <li>2024-01-2027-12, <span class="font-bold">国家自然科学基金面上项目</span>, 车载三维点云道路要素单体化分割理论与方法研究, 主持</li>
+                    <li>2024-01-2026-12, <span class="font-bold">广东省自然科学基金面上项目</span>, 湾区城市数字孪生高精度三维点云部件级分割与交互式分析, 主持</li>
+                    <li>2022-12-2023-12, <span class="font-bold">国家电网</span>, 输电线路三维激光点云数据采集服务, 主持</li>
+                    <li>2022-08-2023-06, <span class="font-bold">国家电网</span>, 激光点云数据规整技术支持服务, 主持</li>
+                    <li>2022-08-2024-09, <span class="font-bold">科技委项目</span>, 低空无人机载激光雷达点云数据获取与语义分割技术, 主持</li>
+                    <li>2022-01-2022-12, <span class="font-bold">广东省“海外名师”项目</span>, 大规模三维点云地物要素语义分割研究, 主持</li>
+                    <li>2021-04-2021-05, 福州大学, 彩色点云数据校正测试服务, 主持</li>
+                    <li>2021-03-2022-03，ISPRS国际摄影测量和遥感学会科学计划，城市地下空间三维语义映射， 联合主持</li>
                     <li>2020-11-2021-04, 福州大学, 点云数据采集服务, 主持</li>
                     <li>2020-06-2021-12, 中山大学, 变化检测融合决策技术研究, 主持</li>
                     <li>2018-01-2022-12, <span class="font-bold">国家自然科学基金面上项目</span>, 基于三维点云的高清地图快速语义标注理论与方法研究, 主持</li>
@@ -561,13 +703,15 @@
                       <li>指导2021级本科生校级大学生创新训练项目, 基于点云的树木碳储量计算</li>
                     </ul>
                   </div>
-
                 </div>
               </div>
+
           </div>
 
         </div>
-      </section>
+      </div>
+    </section>
+
 
       <!-- ==================== 学生板块 ==================== -->
       <div class="flex-1">
@@ -919,8 +1063,8 @@
 
 
 
-      <!-- 博士生 -->
-      <section id="phd" class="scroll-mt-32 mt-24">
+        <!-- 博士生 -->
+        <section id="phd" class="scroll-mt-32 mt-24">
           <div class="mb-10 border-l-8 border-primary pl-4">
             <h1 class="text-4xl font-bold text-primary">博士生</h1>
             <p class="text-gray-500 text-lg">PhD Students</p>
@@ -937,7 +1081,7 @@
               <!-- 间距变小 pl-4，给右侧更多宽度 -->
               <div class="card-body p-0 pl-4 w-full justify-center">
                 <h2 class="text-2xl font-bold text-slate-800 mb-1">孙文涛</h2>
-                <p class="text-sm text-gray-500 mb-4 font-medium">方向：点云理解 123</p>
+                <p class="text-sm text-gray-500 mb-4 font-medium">方向：点云理解</p>
                 <!-- whitespace-nowrap: 强制不换行 -->
                 <div class="border border-gray-300 rounded px-2 py-2 text-xs text-gray-600 bg-gray-50 w-full text-center whitespace-nowrap overflow-hidden">
                   sunwt@mail.sysu.edu.cn
@@ -1050,7 +1194,7 @@
               </figure>
               <div class="card-body p-0 pl-4 w-full justify-center">
                 <h2 class="text-2xl font-bold text-slate-800 mb-1">黄晓彬</h2>
-                <p class="text-sm text-gray-500 mb-4 font-medium">方向：3d生成</p>
+                <p class="text-sm text-gray-500 mb-4 font-medium">方向：三维重建与生成</p>
                 <div class="border border-gray-300 rounded px-2 py-2 text-xs text-gray-600 bg-gray-50 w-full text-center whitespace-nowrap overflow-hidden">
                   huangxb35@mail2.sysu.edu.cn
                 </div>
@@ -1211,7 +1355,7 @@
               </figure>
               <div class="card-body p-0 pl-4 w-full justify-center">
                 <h2 class="text-2xl font-bold text-slate-800">隋佳璐</h2>
-                <p class="text-sm text-gray-500 mb-4 font-medium">2023年访问博士生，香港大学博士生</p>
+                <p class="text-sm text-gray-500 mb-4 font-medium">访问博士生，香港大学博士生</p>
               </div>
             </div>
 
@@ -1222,7 +1366,7 @@
               </figure>
               <div class="card-body p-0 pl-4 w-full justify-center">
                 <h2 class="text-2xl font-bold text-slate-800">徐禧</h2>
-                <p class="text-sm text-gray-500 mb-4 font-medium">2024年访问硕士生</p>
+                <p class="text-sm text-gray-500 mb-4 font-medium">访问硕士生，澳门科技大学硕士生</p>
               </div>
             </div>
 
@@ -1246,9 +1390,9 @@
                 <img src="img/people/Naftaly.png" alt="Naftaly" class="object-cover w-full h-full" onerror="this.src='https://via.placeholder.com/150x200?text=Naftaly'"/>
               </figure>
               <div class="card-body p-0 pl-4 w-full justify-center">
-                <h2 class="text-2xl font-bold text-slate-800 mb-1">Naftaly</h2>
-                <!-- <p class="text-sm text-gray-600 mb-2 font-semibold">2023届博士</p> -->
-                <p class="text-sm text-gray-500">毕业去向： 深圳大学建筑与城市规划学院博士后</p>
+                <h2 class="text-2xl font-bold text-slate-800 mb-1">Naftaly Wambugu</h2>
+                <p class="text-sm text-gray-600 mb-2 font-semibold">2018级博士生</p>
+                <p class="text-sm text-gray-500">深圳大学建筑与城市规划学院博士后</p>
               </div>
             </div>
 
@@ -1259,8 +1403,8 @@
               </figure>
               <div class="card-body p-0 pl-4 w-full justify-center">
                 <h2 class="text-2xl font-bold text-slate-800 mb-1">刘小雪</h2>
-                <p class="text-sm text-gray-600 mb-2 font-semibold">2018级博士</p>
-                <p class="text-sm text-gray-500">毕业去向：贵州师范大学大数据与计算机科学学院副教授</p>
+                <p class="text-sm text-gray-600 mb-2 font-semibold">2018级博士生</p>
+                <p class="text-sm text-gray-500">贵州师范大学大数据与计算机科学学院副教授</p>
               </div>
             </div>
 
@@ -1271,8 +1415,8 @@
               </figure>
               <div class="card-body p-0 pl-4 w-full justify-center">
                 <h2 class="text-2xl font-bold text-slate-800 mb-1">罗智鹏</h2>
-                <p class="text-sm text-gray-600 mb-2 font-semibold">2018级博士</p>
-                <p class="text-sm text-gray-500">毕业去向：闽南师范大学计算机学院副教授</p>
+                <p class="text-sm text-gray-600 mb-2 font-semibold">2018级博士生</p>
+                <p class="text-sm text-gray-500">闽南师范大学计算机学院副教授</p>
               </div>
             </div>
 
@@ -1283,8 +1427,8 @@
               </figure>
               <div class="card-body p-0 pl-4 w-full justify-center">
                 <h2 class="text-2xl font-bold text-slate-800 mb-1">黄鹏頔</h2>
-                <!-- <p class="text-sm text-gray-600 mb-2 font-semibold">2022届硕士</p> -->
-                <p class="text-sm text-gray-500">毕业去向：深圳大学计算机与软件学院副研究员</p>
+                <p class="text-sm text-gray-600 mb-2 font-semibold">2015级博士生</p>
+                <p class="text-sm text-gray-500">深圳大学计算机与软件学院副研究员</p>
               </div>
             </div>
 
@@ -1295,8 +1439,8 @@
               </figure>
               <div class="card-body p-0 pl-4 w-full justify-center">
                 <h2 class="text-2xl font-bold text-slate-800 mb-1">张帅</h2>
-                <p class="text-sm text-gray-600 mb-2 font-semibold">2021级硕士</p>
-                <p class="text-sm text-gray-500">毕业去向：香港科技大学（广州）博士生</p>
+                <p class="text-sm text-gray-600 mb-2 font-semibold">2021级硕士生</p>
+                <p class="text-sm text-gray-500">香港科技大学（广州）博士生</p>
               </div>
             </div>
 
@@ -1307,8 +1451,8 @@
               </figure>
               <div class="card-body p-0 pl-4 w-full justify-center">
                 <h2 class="text-2xl font-bold text-slate-800 mb-1">谢相依</h2>
-                <p class="text-sm text-gray-600 mb-2 font-semibold">2021级硕士</p>
-                <p class="text-sm text-gray-500">毕业去向： 广东省佛山市南海区交通运输局</p>
+                <p class="text-sm text-gray-600 mb-2 font-semibold">2021级硕士生</p>
+                <p class="text-sm text-gray-500">广东省佛山市南海区交通运输局</p>
               </div>
             </div>
 
@@ -1319,8 +1463,8 @@
               </figure>
               <div class="card-body p-0 pl-4 w-full justify-center">
                 <h2 class="text-2xl font-bold text-slate-800 mb-1">丰慧芳</h2>
-                <p class="text-sm text-gray-600 mb-2 font-semibold">2021级博士</p>
-                <!-- <p class="text-sm text-gray-500">毕业去向： 广东省佛山市南海区交通运输局</p> -->
+                <p class="text-sm text-gray-600 mb-2 font-semibold">2021级博士生</p>
+                <p class="text-sm text-gray-500"> 西华大学计算机与软件工程学院 硕士生导师</p>
               </div>
             </div>
 
@@ -1331,13 +1475,14 @@
               </figure>
               <div class="card-body p-0 pl-4 w-full justify-center">
                 <h2 class="text-2xl font-bold text-slate-800 mb-1">马津</h2>
-                <p class="text-sm text-gray-600 mb-2 font-semibold">2021级博士</p>
-                <!-- <p class="text-sm text-gray-500">毕业去向：高校教职</p> -->
+                <p class="text-sm text-gray-600 mb-2 font-semibold">2021级博士生</p>
+                <!-- <p class="text-sm text-gray-500">高校教职</p> -->
               </div>
             </div>
+        </section>
 
-    </div>
-  </section>
+      </div>
+ 
       
 
       </div>
