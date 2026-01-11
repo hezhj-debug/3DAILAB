@@ -12,21 +12,7 @@
   <!-- 2. 引入 FontAwesome 图标 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-  <!-- 3. 配置主题色 -->
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            primary: '#003366',    // 深蓝
-            secondary: '#3793ee',  // 亮蓝
-            accent: '#f8f9fa',     // 浅灰背景
-          }
-        }
-      }
-    }
-  </script>
-
+ 
   <style>
     /* 隐藏滚动条 */
     .no-scrollbar::-webkit-scrollbar { display: none; }
@@ -314,17 +300,7 @@
   </div>
 </main>
 
-  <!-- ========================
-       3. 页脚 (Fixed Footer)
-       ======================== -->
-  <footer class="footer footer-center p-6 bg-[#003366] text-white mt-auto">
-    <aside>
-      <!-- 这里的 ID 是为了防止与上面的地图冲突，通常页脚放简单的版权信息即可 -->
-      <!-- 如果需要这里也显示地图，请确保 ID 不同或复用逻辑 -->
-      <div class="mb-2 opacity-80 text-sm">中山大学 · 珠海</div>
-      <p class="font-bold text-lg">中山大学遥感科学与技术学院 3DAILab</p>
-    </aside>
-  </footer>
+
 
   <!-- 4. 脚本 -->
   <script src="js/common.js"></script>

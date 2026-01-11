@@ -11,22 +11,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
   <!-- 2. 引入 FontAwesome 图标 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <script src="js/common.js"></script>
-  <!-- 3. 配置主题色 -->
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            primary: '#003366',    // 深蓝品牌色
-            secondary: '#3793ee',  // 亮蓝
-            accent: '#f8f9fa',     // 浅灰背景
-          }
-        }
-      }
-    }
-  </script>
-
+  <script src="js/common.js" defer></script>
   <style>
     /* 隐藏滚动条 */
     .no-scrollbar::-webkit-scrollbar { display: none; }
@@ -58,95 +43,6 @@
     .sidebar-link:hover {
       background-color: #e2e6ea;
       transform: translateY(-1px);
-    }
-  </style>
-
-  <style>
-    /* 1. 基础容器设置 */
-    .hover-3d {
-      position: relative;
-      perspective: 1000px; /* 定义 3D 视距，数值越小透视感越强 */
-
-       /* ---在此处添加尺寸设置--- */
-      width: 200 px;  /* 设置固定宽度，例如 200像素 */
-      height: auto;  /* 高度自动 */
-      margin: 0 auto; /* 如果需要居中，加上这一行 */
-    }
-
-    /* 2. 图片容器的基础状态 */
-    .hover-3d figure {
-      transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* 平滑过渡 */
-      transform-style: preserve-3d;
-      transform-origin: center center;
-    }
-
-    /* 3. 那8个空div的布局：将它们铺满卡片，形成九宫格感应区 */
-    .hover-3d > div {
-      position: absolute;
-      width: 33.333%;
-      height: 33.333%;
-      z-index: 50; /* 保证感应区在图片之上 */
-      /* border: 1px solid red;  调试时可以取消注释查看感应区 */
-    }
-
-    /* 4. 定位这8个方块 (中间留空，展示默认状态) */
-    .hover-3d > div:nth-child(2) { top: 0; left: 0; }        /* 左上 */
-    .hover-3d > div:nth-child(3) { top: 0; left: 33.33%; }   /* 中上 */
-    .hover-3d > div:nth-child(4) { top: 0; right: 0; }       /* 右上 */
-    .hover-3d > div:nth-child(5) { top: 33.33%; left: 0; }   /* 中左 */
-    .hover-3d > div:nth-child(6) { top: 33.33%; right: 0; }  /* 中右 */
-    .hover-3d > div:nth-child(7) { bottom: 0; left: 0; }     /* 左下 */
-    .hover-3d > div:nth-child(8) { bottom: 0; left: 33.33%; }/* 中下 */
-    .hover-3d > div:nth-child(9) { bottom: 0; right: 0; }    /* 右下 */
-
-    /* 5. 核心动作：鼠标碰到不同方块时，让 figure 往不同方向倒 */
-    
-    /* 左上角 -> 向左上倾斜 */
-    .hover-3d:has(div:nth-child(2):hover) figure {
-      transform: rotateX(15deg) rotateY(-15deg);
-    }
-    /* 中上 -> 向上倾斜 */
-    .hover-3d:has(div:nth-child(3):hover) figure {
-      transform: rotateX(15deg);
-    }
-    /* 右上 -> 向右上倾斜 */
-    .hover-3d:has(div:nth-child(4):hover) figure {
-      transform: rotateX(15deg) rotateY(15deg);
-    }
-    /* 中左 -> 向左倾斜 */
-    .hover-3d:has(div:nth-child(5):hover) figure {
-      transform: rotateY(-15deg);
-    }
-    /* 中右 -> 向右倾斜 */
-    .hover-3d:has(div:nth-child(6):hover) figure {
-      transform: rotateY(15deg);
-    }
-    /* 左下 -> 向左下倾斜 */
-    .hover-3d:has(div:nth-child(7):hover) figure {
-      transform: rotateX(-15deg) rotateY(-15deg);
-    }
-    /* 中下 -> 向下倾斜 */
-    .hover-3d:has(div:nth-child(8):hover) figure {
-      transform: rotateX(-15deg);
-    }
-    /* 右下 -> 向右下倾斜 */
-    .hover-3d:has(div:nth-child(9):hover) figure {
-      transform: rotateX(-15deg) rotateY(15deg);
-    }
-
-    /* 6. 可选：增加高光效果，让3D感更强 */
-    .hover-3d figure::after {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: linear-gradient(135deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 60%);
-      opacity: 0;
-      transition: opacity 0.3s;
-      pointer-events: none;
-    }
-    /* 鼠标放上去时显示一点反光 */
-    .hover-3d:hover figure::after {
-      opacity: 1;
     }
   </style>
 
@@ -1489,17 +1385,6 @@
     </div>
   </main>
 
-  <!-- ========================
-       3. 页脚 (Fixed Footer)
-       ======================== -->
-  <footer class="footer footer-center p-6 bg-[#003366] text-white mt-auto">
-    <aside>
-      <!-- 这里的 ID 是为了防止与上面的地图冲突，通常页脚放简单的版权信息即可 -->
-      <!-- 如果需要这里也显示地图，请确保 ID 不同或复用逻辑 -->
-      <div class="mb-2 opacity-80 text-sm">中山大学 · 珠海</div>
-      <p class="font-bold text-lg">中山大学遥感科学与技术学院 3DAILab</p>
-    </aside>
-  </footer>
 
   <!-- 4. 侧边栏滚动监听脚本 -->
   <script>
@@ -1545,6 +1430,7 @@
       // 4. 初始化一次 (防止刷新页面后状态不对)
       onScroll();
     });
+    
     
     // 访客地图
     var _clustrmaps = {key:'sail-demo',path:'/',id:'clustrmaps'};
