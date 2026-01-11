@@ -22,71 +22,74 @@
 
 <body class="font-sans min-h-screen bg-gray-50 text-slate-800 flex flex-col">
 
-
   <!-- ========================
        2. 主体内容
        ======================== -->
   <main class="flex-grow container mx-auto px-4 py-8 pt-28">
     
-    <!-- 修改：max-w-5xl -> max-w-7xl，让三列布局更宽敞 -->
-    <div class="max-w-5xl mx-auto space-y-12">
+    <!-- 容器最大宽度调整 -->
+    <div class="max-w-4xl mx-auto space-y-12">
       
       <!-- 2.1 联系信息板块 -->
       <section>
-        <div class="card glass shadow-xl border-t-4 border-primary">
-          <div class="card-body">
-            <!-- 页面标题 -->
-            <div class="mb-10 border-l-8 border-primary pl-4">
-              <h1 class="text-4xl font-bold text-primary">联系我们 </h1>
-              <p class="text-gray-500 text-lg">Contact</p>
-            </div>
-            <!-- 
-               核心修改：
-               grid-cols-1 (手机单列) 
-               lg:grid-cols-3 (大屏三列：文字 | 图片 | 地图)
-            -->
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
-              
-              <!-- 第一列：文字信息 (保持不变) -->
-              <div class="space-y-8 self-center">
-                <div class="flex items-start gap-4 group">
-                  <div class="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300">
-                    <i class="fa fa-map-marker-alt text-xl"></i>
-                  </div>
-                  <div>
-                    <h5 class="text-lg font-bold text-gray-800 mb-1">地址 Address</h5>
-                    <p class="text-gray-600 leading-relaxed">广东省珠海市唐家湾<br>中山大学珠海校区瀚林三号</p>
-                  </div>
-                </div>
+        <!-- 页面标题 -->
+      <div class="flex items-center justify-between mb-6 border-b border-gray-200 pb-4">
+        <div class="border-l-8 border-primary pl-4">
+          <h1 class="text-4xl font-bold text-primary">联系我们</h1>
+          <p class="text-gray-500 text-lg">Contact</p>
+        </div>
+      </div>
+        <div class="card bg-white shadow-sm border border-gray-200">
+          <div class="card-body p-8 space-y-8">
 
-                <div class="flex items-start gap-4 group">
-                  <div class="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300">
-                    <i class="fa fa-envelope text-xl"></i>
-                  </div>
-                  <div>
-                    <h5 class="text-lg font-bold text-gray-800 mb-1">邮箱 Email</h5>
-                    <a href="mailto:chenyp79@mail.sysu.edu.cn" class="link link-hover text-secondary text-lg">chenyp79@mail.sysu.edu.cn</a>
-                    <p class="text-xs text-gray-400 mt-1">(公事请使用学校邮箱联系)</p>
-                  </div>
+            <!-- 第一部分：文字信息 (独占一行) -->
+            <div class="flex flex-col md:flex-row gap-8 pb-8 border-b border-gray-100">
+              
+              <!-- 地址 -->
+              <div class="flex items-start gap-4 flex-1">
+                <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0">
+                  <i class="fa fa-map-marker-alt text-xl"></i>
+                </div>
+                <div>
+                  <h5 class="text-lg font-bold text-slate-800 mb-1">地址 Address</h5>
+                  <p class="text-gray-600 leading-relaxed">广东省珠海市唐家湾<br>中山大学珠海校区瀚林三号</p>
                 </div>
               </div>
 
-              <!-- 第二列：图片容器 (保留原来的图片) -->
-              <div class="w-full h-80 bg-gray-100 rounded-xl overflow-hidden border border-gray-200 shadow-inner relative group">
+              <!-- 邮箱 -->
+              <div class="flex items-start gap-4 flex-1">
+                <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0">
+                  <i class="fa fa-envelope text-xl"></i>
+                </div>
+                <div>
+                  <h5 class="text-lg font-bold text-slate-800 mb-1">邮箱 Email</h5>
+                  <a href="mailto:chenyp79@mail.sysu.edu.cn" class="link link-hover text-secondary text-lg font-medium">chenyp79@mail.sysu.edu.cn</a>
+                  <p class="text-xs text-gray-400 mt-1">(公事请使用学校邮箱联系)</p>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- 第二部分：图片与地图 (并排两列) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 h-[22rem]"> <!-- 固定高度保持对齐 -->
+              
+              <!-- 左侧：校园图片 -->
+              <div class="w-full h-full rounded-xl overflow-hidden border border-gray-200 shadow-inner relative group">
                 <img 
                   src="img/sysu.jpg" 
                   alt="中山大学珠海校区" 
-                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  onerror="this.src='https://via.placeholder.com/600x400?text=Campus+View'" 
                 />
                 <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                  <span class="text-white font-bold tracking-wider border border-white px-4 py-2 rounded-lg backdrop-blur-sm">
+                  <span class="text-white font-bold tracking-wider border border-white px-4 py-2 rounded-full backdrop-blur-sm shadow-lg">
                     <i class="fas fa-image mr-2"></i> 校园风光
                   </span>
                 </div>
               </div>
 
-              <!-- 第三列：Google Map (新增在右侧) -->
-              <div class="w-full h-80 bg-gray-100 rounded-xl overflow-hidden border border-gray-200 shadow-inner relative group">
+              <!-- 右侧：Google Map -->
+              <div class="w-full h-full rounded-xl overflow-hidden border border-gray-200 shadow-inner relative">
                 <iframe 
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3723.486648453003!2d113.59994261541433!3d22.369668985295746!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x340160ea703b3c8d%3A0x9bd49c60c917fcc4!2sSun%20Yat-sen%20University%20Zhuhai%20Campus!5e0!3m2!1sen!2sca!4v1714284742584!5m2!1sen!2sca" 
                   width="100%" 
@@ -96,51 +99,22 @@
                   loading="lazy" 
                   referrerpolicy="no-referrer-when-downgrade">
                 </iframe>
-                
-                <div class="absolute top-0 right-0 bg-white/90 backdrop-blur-sm px-3 py-1 m-2 rounded text-xs font-bold text-primary shadow-sm border border-gray-200 pointer-events-none">
+                <!-- 地理位置标签 -->
+                <div class="absolute top-2 right-2 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold text-primary shadow-sm border border-gray-100 pointer-events-none">
                   📍 Location
                 </div>
               </div>
 
             </div>
+
           </div>
         </div>
       </section>
 
-      <!-- 2.2 研究生招生板块 -->
-      <section>
-        <div class="card bg-white shadow-xl border border-gray-100">
-          <div class="card-body">
-            <!-- <h2 class="card-title text-2xl mb-4 text-primary flex items-center">
-              <i class="fa-solid fa-user-graduate mr-3"></i> 研究生招生 <span class="text-base font-normal text-gray-500 ml-2">Graduate Admission</span>
-            </h2> -->
-            <div class="mb-10 border-l-8 border-primary pl-4">
-              <h1 class="text-4xl font-bold text-primary">研究生招生 </h1>
-              <p class="text-gray-500 text-lg">Graduate Admission</p>
-            </div>
-            <div class="bg-blue-50/50 p-6 rounded-lg border border-blue-100 mb-6">
-              <p class="text-lg text-gray-700 mb-4 font-medium">
-                实验室长期招收 <span class="text-secondary font-bold">硕士、博士、博士后</span>，同时欢迎学有余力的本科生提前加入科研训练。
-              </p>
-              
-              <h5 class="font-bold text-slate-800 mb-3 flex items-center">
-                <i class="fas fa-check-circle text-success mr-2"></i> 希望你具备：
-              </h5>
-              <ol class="list-decimal list-inside space-y-2 text-gray-600 ml-2">
-                <li>较强的 <span class="font-bold text-gray-800">自我驱动力</span> 与自律精神；</li>
-                <li>浓厚的 <span class="font-bold text-gray-800">研究兴趣</span> 与持续学习意愿；</li>
-                <li>良好的 <span class="font-bold text-gray-800">数学与专业基础</span></li>
-              </ol>
-            </div>
-          </div>
-        </div>
-      </section>
-
-
-     
     </div>
   </main>
   
-      
+  <!-- 页脚由 common.js 自动注入 -->
+
 </body>
 </html>
